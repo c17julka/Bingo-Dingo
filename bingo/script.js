@@ -4,6 +4,7 @@ function genBingo()
     var c = 0;
     list.innerHTML = "";
 
+    // Eurovision array
     var pnshArray = 
     [
     "Fake rain", 
@@ -33,6 +34,7 @@ function genBingo()
     "Your song gets no points from a country"
     ];
 
+    // Generates random data from array then deletes it
     function wheel()
     {
         var index = Math.floor(Math.random() * pnshArray.length);
@@ -41,25 +43,23 @@ function genBingo()
         return r;
     }
     
+    // Display bingo
     for (i = 0; i < 5; i++)
     {
-
-        list.innerHTML += "<tr><td onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel() + "</td><td onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel() + "</td><td onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel() + "</td><td onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel() + "</td><td onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel() + "</td></tr>";
-        
+        list.innerHTML += "<tr><td onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel() + "</td><td onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel() + "</td><td onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel() + "</td><td onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel() + "</td><td onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel() + "</td></tr>";        
     }
     
 }
 
+// Click on goal to fill it
 function changecss(id)
 {
-    if (document.getElementById(id).style.background) {
+    if (document.getElementById(id).style.background) 
+    {
         document.getElementById(id).style.background = "";
-      } else {
+    } 
+    else 
+    {
         document.getElementById(id).style.background = "#BB86FC";
-      }
-}
-
-function ani() 
-{
-    $("button").animate({shake: 0}, 500);
+    }
 }
