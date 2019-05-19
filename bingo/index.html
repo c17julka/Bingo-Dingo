@@ -16,6 +16,10 @@
     
     <div id="this">
         <button type="button" onclick="genBingo()">Generate new bingo</button>
+        <select id="bingoSelect" onchange="genBingo();">
+            <option value="Eurovision">Eurovision</option>
+            <option value="Kdrama Rom Com">Kdrama Rom Com</option>
+        </select>
         <table id="bingolist"></table>  
     </div>
 
