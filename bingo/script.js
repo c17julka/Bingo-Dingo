@@ -1,8 +1,38 @@
+// Example bingo. Copy and paste this in bingos to make new bingo
+// "Eurovision": // 'name' bingo
+//         [
+//             "", 
+//             "", 
+//             "", 
+//             "", 
+//             "", 
+//             "",
+//             "", 
+//             "",
+//             "", 
+//             "", 
+//             "", 
+//             "", 
+//             "", 
+//             "",
+//             "", 
+//             "",
+//             "", 
+//             "", 
+//             "",
+//             "",
+//             "",
+//             "",
+//             "",
+//             "",
+//             ""
+//         ],
+
 function genBingo()
 {
     var list = document.getElementById("bingolist");
     var value = document.getElementById("bingoSelect").value;
-    var c = 0;
+    var c = 0; // Counter for td ID
     list.innerHTML = "";
 
     var bingos = {
@@ -56,29 +86,36 @@ function genBingo()
             "Stare", 
             "Evil parent",
             "Rich Bitch!",
-            "Ooops! Fell on your shoulder",
+            "Oops! Fell on your shoulder",
             "Back hug",
             "Awkward physical closeness",
             "Sickness",
             "Love geometrics",
-            "Totally or partially orphaned"
+            "Totally or partially orphaned",
+            "Death threat",
+            "Talking to themselves",
+            "Oppa!",
+            "Bromance",
+            "Product placement",
+            "Hair pulling",
+            "Karaoke"
         ],
-        "Kdrama Rom Com": // kdrama rom com bingo
+        "Hot fuzz": // Hot Fuzz bingo (in progress)
         [
-            "Piggyback ride", 
-            "Slowmotion", 
-            "Wrist grab", 
-            "Ramyun", 
-            "Flashback", 
-            "Bad Englishu",
-            "Slap!", 
-            "Soju",
-            "Aish! / Aigoo!", 
-            "Cry", 
-            "Second lead moment", 
-            "Sleeps like a log", 
-            "Shower scene", 
-            "Face zoom",
+            "Orders a drink", 
+            "Says 'Greater good'", 
+            "Black hood", 
+            "Danny ask Nick a question", 
+            "Says 'Angle'", 
+            "Someone gets shot",
+            "Michal says 'Yarp'", 
+            "Whooh sound",
+            "Mugshot", 
+            "Says 'Cornetto'", 
+            "Murder = accident", 
+            "Angel or Danny whips out new firepower", 
+            "Simon Skinner falls", 
+            "",
             "First kiss", 
             "Male lead is a Bitch!",
             "Second female lead is a Bitch!", 
@@ -89,7 +126,6 @@ function genBingo()
             "Back hug",
             "Awkward physical closeness",
             "Sickness",
-            "Love geometrics",
             "Totally or partially orphaned"
         ]
     }           
