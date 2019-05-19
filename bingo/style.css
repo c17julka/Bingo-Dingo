@@ -1,0 +1,42 @@
+body {
+    background-color: #121212;
+    color: #FFFFFF;
+}
+
+td {
+    max-width: 100px;
+    height: 100px;
+    border: 2px solid grey;
+    padding: 5px;
+    text-align: center;
+    font-family: sans-serif;
+    cursor: pointer;
+}
+
+table {
+    margin: auto;
+    background-color: #252525;
+}
+
+#this {
+    text-align: center;
+}
+
+button {
+    background-color: #252525;
+    color: white;
+    border: 3px solid #BB86FC;
+    padding: 10px 30px;
+    margin: 20px;
+    font-family: sans-serif;
+    border-radius: 10px;
+    font-size: 30px;
+}
+
+button:focus {
+    outline: none;
+}
+
+button:active {
+    filter: brightness(1.2);
+}
