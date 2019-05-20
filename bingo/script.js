@@ -98,7 +98,8 @@ function genBingo()
             "Bromance",
             "Product placement",
             "Hair pulling",
-            "Karaoke"
+            "Karaoke",
+            "Eyes open kiss"
         ],
         "Hot fuzz": // Hot Fuzz bingo (in progress)
         [
