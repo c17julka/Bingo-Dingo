@@ -155,13 +155,13 @@ function genBingo()
 // Click on goal to fill it
 function changecss(id)
 {
-    if (document.getElementById(id).style.background) 
+    if (document.getElementById(id).style.backgroundColor) 
     {
-        document.getElementById(id).style.background = "";
+        document.getElementById(id).style.backgroundColor = "";
     } 
     else 
     {
-        document.getElementById(id).style.background = "#BB86FC";
+        document.getElementById(id).style.backgroundColor = "rgb(187, 134, 252)";
     }
 
     checklines();
@@ -175,7 +175,7 @@ function checklines()
     // Check vertical line
     for (i = 0; i < 5; i++)
     {
-        if (document.getElementById(i).style.background == "rgb(187, 134, 252)" && document.getElementById(i + 5).style.background == "rgb(187, 134, 252)" && document.getElementById(i + 10).style.background == "rgb(187, 134, 252)" && document.getElementById(i + 15).style.background == "rgb(187, 134, 252)" && document.getElementById(i + 20).style.background == "rgb(187, 134, 252)")
+        if (document.getElementById(i).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 5).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 10).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 15).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 20).style.backgroundColor == "rgb(187, 134, 252)")
         {
             btext.innerHTML="BINGO";
         }
@@ -185,20 +185,20 @@ function checklines()
     // Check horizontal line
     for (i = 0; i < 25; i += 5)
     {
-        if (document.getElementById(i).style.background == "rgb(187, 134, 252)" && document.getElementById(i + 1).style.background == "rgb(187, 134, 252)" && document.getElementById(i + 2).style.background == "rgb(187, 134, 252)" && document.getElementById(i + 3).style.background == "rgb(187, 134, 252)" && document.getElementById(i + 4).style.background == "rgb(187, 134, 252)")
+        if (document.getElementById(i).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 1).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 2).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 3).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 4).style.backgroundColor == "rgb(187, 134, 252)")
         {
             btext.innerHTML="BINGO";
         }
     }
 
     // Check diagonal LT to RB
-    if (document.getElementById(0).style.background == "rgb(187, 134, 252)" && document.getElementById(0 + 6).style.background == "rgb(187, 134, 252)" && document.getElementById(0 + 12).style.background == "rgb(187, 134, 252)" && document.getElementById(0 + 18).style.background == "rgb(187, 134, 252)" && document.getElementById(0 + 24).style.background == "rgb(187, 134, 252)")
+    if (document.getElementById(0).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(0 + 6).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(0 + 12).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(0 + 18).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(0 + 24).style.backgroundColor == "rgb(187, 134, 252)")
     {
         btext.innerHTML="BINGO";
     }
 
     // Check diagonal RT to LB
-    if (document.getElementById(4).style.background == "rgb(187, 134, 252)" && document.getElementById(4 + 4).style.background == "rgb(187, 134, 252)" && document.getElementById(4 + 8).style.background == "rgb(187, 134, 252)" && document.getElementById(4 + 12).style.background == "rgb(187, 134, 252)" && document.getElementById(4 + 16).style.background == "rgb(187, 134, 252)")
+    if (document.getElementById(4).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(4 + 4).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(4 + 8).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(4 + 12).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(4 + 16).style.backgroundColor == "rgb(187, 134, 252)")
     {
         btext.innerHTML="BINGO";
     }
