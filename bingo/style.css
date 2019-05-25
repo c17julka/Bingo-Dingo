@@ -14,12 +14,19 @@ body {
 
 td {
     max-width: 100px;
-    height: 100px;
     border: 2px solid grey;
     padding: 5px;
     text-align: center;
     font-family: "Lato";
     cursor: pointer;
+}
+
+td.normal {
+    height: 100px;
+}
+
+td.small {
+    height: 120px;
 }
 
 table {

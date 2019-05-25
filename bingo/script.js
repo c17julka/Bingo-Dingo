@@ -1,6 +1,6 @@
-// Example bingo. Copy and paste this in bingos to make new bingo
+// Example bingos. Copy and paste this in bingos to make new bingo
 //
-// "Eurovision": // 'name' bingo
+// "name": // 'name' bingo (normal size)
 //         [
 //             "", 
 //             "", 
@@ -28,6 +28,26 @@
 //             "",
 //             ""
 //         ],
+
+// "name (small)": // 'name' bingo (small size)
+//         [
+//             "", 
+//             "", 
+//             "", 
+//             "", 
+//             "", 
+//             "",
+//             "", 
+//             "",
+//             "", 
+//             "", 
+//             "", 
+//             "", 
+//             "", 
+//             "",
+//             "", 
+//             ""
+//         ]
 
 function genBingo()
 {
@@ -103,7 +123,7 @@ function genBingo()
             "Karaoke",
             "Eyes open kiss"
         ],
-        "Hot fuzz": // Hot Fuzz bingo (in progress)
+        "Hot Fuzz (small)": // Hot Fuzz bingo (in progress)
         [
             "Orders a drink", 
             "Says 'Greater good'", 
@@ -112,24 +132,15 @@ function genBingo()
             "Says 'Angle'", 
             "Someone gets shot",
             "Michal says 'Yarp'", 
-            "Whooh sound",
+            "Whoosh sound",
             "Mugshot", 
             "Says 'Cornetto'", 
             "Murder = accident", 
             "Angel or Danny whips out new firepower", 
             "Simon Skinner falls", 
-            "",
+            ":)",
             "First kiss", 
-            "Male lead is a Bitch!",
-            "Second female lead is a Bitch!", 
-            "Stare", 
-            "Evil parent",
-            "Rich Bitch!",
-            "Ooops! Fell on your shoulder",
-            "Back hug",
-            "Awkward physical closeness",
-            "Sickness",
-            "Totally or partially orphaned"
+            "Male lead is a Bitch!"
         ]
     }           
 
@@ -143,9 +154,24 @@ function genBingo()
     }
     
     // Display bingo
-    for (i = 0; i < 5; i++)
+    //
+    // 4x4 bingo
+    if (value.includes("(small)"))
     {
-        list.innerHTML += "<tr><td onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td></tr>";        
+        for (i = 0; i < 4; i++)
+        {
+            list.innerHTML += "<tr><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td></tr>";
+        }
+
+    }
+
+    // 5x5 bingo
+    else 
+    {
+        for (i = 0; i < 5; i++)
+        {
+            list.innerHTML += "<tr><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td></tr>";        
+        }
     }
 
     btext.innerHTML="";
@@ -171,35 +197,74 @@ function changecss(id)
 function checklines()
 {
     var btext = document.getElementById("bingoText");
+    var value = document.getElementById("bingoSelect").value;
+
+    if (value.includes("(small)"))
+    {
+
+        // Check vertical line
+        for (i = 0; i < 4; i++)
+        {
+            if (document.getElementById(i).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 4).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 8).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 12).style.backgroundColor == "rgb(187, 134, 252)")
+            {
+                btext.innerHTML="BINGO";
+            }
+
+        }
+
+        // Check horizontal line
+        for (i = 0; i < 16; i += 4)
+        {
+            if (document.getElementById(i).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 1).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 2).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 3).style.backgroundColor == "rgb(187, 134, 252)")
+            {
+                btext.innerHTML="BINGO";
+            }
+        }
+
+        // Check diagonal LT to RB
+        if (document.getElementById(0).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(0 + 5).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(0 + 10).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(0 + 15).style.backgroundColor == "rgb(187, 134, 252)")
+        {
+            btext.innerHTML="BINGO";
+        }
+
+        // Check diagonal RT to LB
+        if (document.getElementById(3).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(3 + 3).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(3 + 6).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(3 + 9).style.backgroundColor == "rgb(187, 134, 252)")
+        {
+            btext.innerHTML="BINGO";
+        }
+    }
     
-    // Check vertical line
-    for (i = 0; i < 5; i++)
+    else
     {
-        if (document.getElementById(i).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 5).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 10).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 15).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 20).style.backgroundColor == "rgb(187, 134, 252)")
+        // Check vertical line
+        for (i = 0; i < 5; i++)
+        {
+            if (document.getElementById(i).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 5).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 10).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 15).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 20).style.backgroundColor == "rgb(187, 134, 252)")
+            {
+                btext.innerHTML="BINGO";
+            }
+
+        }
+
+        // Check horizontal line
+        for (i = 0; i < 25; i += 5)
+        {
+            if (document.getElementById(i).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 1).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 2).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 3).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 4).style.backgroundColor == "rgb(187, 134, 252)")
+            {
+                btext.innerHTML="BINGO";
+            }
+        }
+
+        // Check diagonal LT to RB
+        if (document.getElementById(0).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(0 + 6).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(0 + 12).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(0 + 18).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(0 + 24).style.backgroundColor == "rgb(187, 134, 252)")
         {
             btext.innerHTML="BINGO";
         }
 
-    }
-
-    // Check horizontal line
-    for (i = 0; i < 25; i += 5)
-    {
-        if (document.getElementById(i).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 1).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 2).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 3).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 4).style.backgroundColor == "rgb(187, 134, 252)")
+        // Check diagonal RT to LB
+        if (document.getElementById(4).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(4 + 4).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(4 + 8).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(4 + 12).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(4 + 16).style.backgroundColor == "rgb(187, 134, 252)")
         {
             btext.innerHTML="BINGO";
         }
-    }
-
-    // Check diagonal LT to RB
-    if (document.getElementById(0).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(0 + 6).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(0 + 12).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(0 + 18).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(0 + 24).style.backgroundColor == "rgb(187, 134, 252)")
-    {
-        btext.innerHTML="BINGO";
-    }
-
-    // Check diagonal RT to LB
-    if (document.getElementById(4).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(4 + 4).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(4 + 8).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(4 + 12).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(4 + 16).style.backgroundColor == "rgb(187, 134, 252)")
-    {
-        btext.innerHTML="BINGO";
     }
 }
