@@ -53,6 +53,7 @@ function genBingo()
 {
     var list = document.getElementById("bingolist");
     var value = document.getElementById("bingoSelect").value;
+    var size = document.getElementById("bingoSize");
     var btext = document.getElementById("bingoText");
     var c = 0; // Counter for td ID
     list.innerHTML = "";
@@ -147,16 +148,29 @@ function genBingo()
     // Generates random data from array then deletes it
     function wheel(val)
     {
-        var index = Math.floor(Math.random() * bingos[val].length);
-        var r = bingos[val][index];
-        bingos[val].splice(index, 1);
-        return r;
+        // Do at own risk! Generates normal sized bingo on bingos with less than 25 goals
+        if (size.value == "Normal" && value.includes("(small)"))
+        {
+            var index = Math.floor(Math.random() * bingos[val].length);
+            var r = bingos[val][index];
+            return r;
+        }
+
+        // Normal bingos for normal bingo people
+        else
+        {
+            var index = Math.floor(Math.random() * bingos[val].length);
+            var r = bingos[val][index];
+            bingos[val].splice(index, 1);
+            return r;
+        }
+        
     }
     
     // Display bingo
     //
     // 4x4 bingo
-    if (value.includes("(small)"))
+    if (size.value == "Small")
     {
         for (i = 0; i < 4; i++)
         {
@@ -198,8 +212,10 @@ function checklines()
 {
     var btext = document.getElementById("bingoText");
     var value = document.getElementById("bingoSelect").value;
+    var size = document.getElementById("bingoSize").value;
 
-    if (value.includes("(small)"))
+    // Check lines on small bingo
+    if (size == "Small")
     {
 
         // Check vertical line
@@ -234,6 +250,7 @@ function checklines()
         }
     }
     
+    // Check lines on normal bingo
     else
     {
         // Check vertical line
