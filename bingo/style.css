@@ -41,29 +41,30 @@ table {
     width: 600px;
 }
 
-#inputdiv, #btndiv {
+#inputdiv, #sizediv {
     width:285px;
     display: inline-block;
 }
 
 #btndiv {
-    text-align: right;
+    margin-top: 10px;
 }
+
 
 h1 {
-    margin: 10px 0px 5px 5px;
+    margin: 0px 0px 5px 5px;
     font-family: "Lato";
-    font-size: 18px;
+    font-size: 15px;
 }
 
-#bingoSelect {
+.dropdown {
     background-color: #252525;
     color: white;
     border: 2px solid #BB86FC;
-    padding: 6px 20px;
+    padding: 2px 20px;
     font-family: "Lato";
     border-radius: 10px;
-    font-size: 18px;
+    font-size: 16px;
     margin-left: 5px;
 }
 
@@ -71,18 +72,19 @@ button {
     background-color: #252525;
     color: white;
     border: 2px solid #BB86FC;
-    padding: 6px 20px;
+    padding: 6px 23px;
     font-family: "Lato";
     border-radius: 10px;
-    font-size: 24px;
+    font-size: 20px;
     margin-bottom: 10px;
+    margin-left: 5px;
 }
 
-button:focus, #bingoSelect:focus {
+button:focus, select:focus {
     outline: none;
 }
 
-button:active, #bingoSelect:active {
+button:active {
     filter: brightness(1.3);
 }
 
