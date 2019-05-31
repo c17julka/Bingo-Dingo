@@ -141,7 +141,84 @@ function genBingo()
             "Simon Skinner falls", 
             ":)",
             "First kiss", 
-            "Male lead is a Bitch!"
+            "Martin Freeman"
+        ],
+        "Rick and Morty (small)": // Jackie Chan (in progress)
+        [
+            "Rick opens a portal", 
+            "'w' lips on anyone's face", 
+            "Morty mentions Jessica", 
+            "Jerry or Beth specify she's a horse surgeon", 
+            "Rick burps", 
+            "Any spaceship appears",
+            "Jerry makes a joke", 
+            "Rick makes a joke",
+            "Any reference to balls", 
+            "Rick takes Morty out of school", 
+            "Rick takes Morty out of school during Math class", 
+            "Rick drinks from his flask", 
+            "Catchphrase", 
+            "Morty says “I dunno Rick” or “Aw Geez”",
+            "Beth drinks wine", 
+            "Rick showcases a new invention",
+            "Somebody swears"
+        ],
+        "Action (small)": // Acion (in progress)
+        [
+            "", 
+            "", 
+            "", 
+            "", 
+            "", 
+            "",
+            "", 
+            "",
+            "", 
+            "", 
+            "", 
+            "", 
+            "", 
+            "",
+            "", 
+            ""
+        ],
+        "Rom Com (small)": // Rom Com (in progress)
+        [
+            "No, no, no, no, NO! I’m not going. [Cut to them going.]", 
+            "No. Come in. ____ was just leaving.", 
+            "You go girl!", 
+            "Awkward", 
+            "Cringe line", 
+            "Creepy as romantic",
+            "You should slap him/her", 
+            "Montage time",
+            "Transformation / makeover", 
+            "Boss is a Bitch!", 
+            "The waking-up-the-morning-after-totally-clothed scene", 
+            "", 
+            "", 
+            "",
+            "", 
+            ""
+        ],
+        "Comedy (small)": // Comedy (in progress)
+        [
+            "No, no, no, no, NO! I’m not going. [Cut to them going.]", 
+            "Fart", 
+            "", 
+            "", 
+            "", 
+            "",
+            "", 
+            "",
+            "", 
+            "", 
+            "", 
+            "", 
+            "", 
+            "",
+            "", 
+            ""
         ]
     }           
 
@@ -177,6 +254,11 @@ function genBingo()
             list.innerHTML += "<tr><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td></tr>";
         }
 
+    }else if(size.value == "Tiny"){
+        for (i = 0; i < 3; i++)
+        {
+            list.innerHTML += "<tr><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td></tr>";
+        }
     }
 
     // 5x5 bingo
@@ -248,6 +330,8 @@ function checklines()
         {
             btext.innerHTML="BINGO";
         }
+    } else if (size == "Tiny"){
+
     }
     
     // Check lines on normal bingo
