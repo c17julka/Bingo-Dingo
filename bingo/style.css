@@ -25,7 +25,7 @@ td.normal {
     height: 100px;
 }
 
-td.small {
+td.small, td.tiny {
     height: 120px;
 }
 

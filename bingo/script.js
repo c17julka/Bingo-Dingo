@@ -48,6 +48,7 @@
 //             "", 
 //             ""
 //         ]
+var tryingB = "";
 
 function genBingo()
 {
@@ -57,6 +58,7 @@ function genBingo()
     var btext = document.getElementById("bingoText");
     var c = 0; // Counter for td ID
     list.innerHTML = "";
+    tryingB = "";
 
     var bingos = {
         "Eurovision": // Eurovision bingo
@@ -143,7 +145,7 @@ function genBingo()
             "First kiss", 
             "Martin Freeman"
         ],
-        "Rick and Morty (small)": // Jackie Chan (in progress)
+        "Rick and Morty (small)": // Rick and morty (in progress)
         [
             "Rick opens a portal", 
             "'w' lips on anyone's face", 
@@ -158,10 +160,23 @@ function genBingo()
             "Rick takes Morty out of school during Math class", 
             "Rick drinks from his flask", 
             "Catchphrase", 
-            "Morty says “I dunno Rick” or “Aw Geez”",
+            "Morty says “Aw Geez”",
             "Beth drinks wine", 
+            "Morty says “I dunno Rick”",
             "Rick showcases a new invention",
-            "Somebody swears"
+            "Somebody swears",
+            "Jerry is being a coward",
+            "Sigh",
+            "Made up words",
+            "Ad-libs ",
+            "Jerry being mediocre",
+            "Disgusted sound",
+            "Rick is a Bitch!",
+            "Someone dies",
+            "Counsel of Ricks",
+            "Vagina -- no relation"
+            
+
         ],
         "Action (small)": // Acion (in progress)
         [
@@ -257,7 +272,7 @@ function genBingo()
     }else if(size.value == "Tiny"){
         for (i = 0; i < 3; i++)
         {
-            list.innerHTML += "<tr><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td></tr>";
+            list.innerHTML += "<tr><td class='tiny' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='tiny' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='tiny' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td></tr>";
         }
     }
 
@@ -331,7 +346,40 @@ function checklines()
             btext.innerHTML="BINGO";
         }
     } else if (size == "Tiny"){
+ // Check vertical line
+ for (i = 0; i < 3; i++)
+ {
+     if (document.getElementById(i).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 3).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 6).style.backgroundColor == "rgb(187, 134, 252)")
+     {
+         btext.innerHTML="BINGO";
+         tryingB++;
+     }
 
+ }
+
+ // Check horizontal line
+ for (i = 0; i < 9; i += 3)
+ {
+     if (document.getElementById(i).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 1).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 2).style.backgroundColor == "rgb(187, 134, 252)")
+     {
+         btext.innerHTML="BINGO";
+         tryingB++;
+     }
+ }
+
+ // Check diagonal LT to RB
+ if (document.getElementById(0).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(0 + 5).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(0 + 10).style.backgroundColor == "rgb(187, 134, 252)")
+ {
+     btext.innerHTML="BINGO";
+     tryingB++;
+ }
+
+ // Check diagonal RT to LB
+ if (document.getElementById(3).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(3 + 3).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(3 + 6).style.backgroundColor == "rgb(187, 134, 252)")
+ {
+     btext.innerHTML="BINGO";
+     tryingB++;
+ }
     }
     
     // Check lines on normal bingo
@@ -368,4 +416,6 @@ function checklines()
             btext.innerHTML="BINGO";
         }
     }
+
 }
+
