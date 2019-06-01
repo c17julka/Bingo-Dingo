@@ -124,6 +124,36 @@ function genBingo()
             "Karaoke",
             "Eyes open kiss"
         ],
+
+        "jorbs": // jorbs (joinrbs) bingo (in progress)
+        [
+            "DIG!", 
+            "Calling out chatter for being wrong", 
+            "'I don't know what I'm doing'", 
+            "Kills The Heart", 
+            "Dies", 
+            "Corruption + Dead Branch",
+            "Dead Branch", 
+            "Answers a random / irrelevant question",
+            "Talks about Dolphin", 
+            "Opens Paint", 
+            "Sasses against chat", 
+            "Bursts into random laughter", 
+            "Forgets to use potion", 
+            "!lucker",
+            "Promotes chatter", 
+            "Talks about New Zealand",
+            "Slime Boss kicks ass", 
+            "Talks about Caitlin", 
+            "Zephyr visits",
+            "Bathroom break",
+            "Eating",
+            "Snecko Eye",
+            "Gives life lesson",
+            "Wins fight with 1HP left",
+            "Gets stabbed by Wheel of (Un)fortune"
+        ],
+
         "Hot Fuzz (small)": // Hot Fuzz bingo (in progress)
         [
             "Orders a drink", 
