@@ -151,7 +151,9 @@ function genBingo()
             "Snecko Eye",
             "Gives life lesson",
             "Wins fight with 1HP left",
-            "Gets stabbed by Wheel of (Un)fortune"
+            "Gets stabbed by Wheel of (Un)fortune",
+            "Insults enemy in the game",
+            "Suddenly talks about something random"
         ],
 
         "Hot Fuzz (small)": // Hot Fuzz bingo (in progress)
@@ -178,7 +180,7 @@ function genBingo()
     // Generates random data from array then deletes it
     function wheel(val)
     {
-        // Do at own risk! Generates normal sized bingo on bingos with less than 25 goals
+        // Do at own risk! Generates normal sized bingo on small bingos
         if (size.value == "Normal" && value.includes("(small)"))
         {
             var index = Math.floor(Math.random() * bingos[val].length);
@@ -199,8 +201,17 @@ function genBingo()
     
     // Display bingo
     //
+    // 3x3 bingo
+    if (size.value == "Tiny")
+    {
+        for (i = 0; i < 3; i++)
+        {
+            list.innerHTML += "<tr><td class='tiny' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='tiny' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='tiny' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td></tr>";
+        }
+    }
+
     // 4x4 bingo
-    if (size.value == "Small")
+    else if (size.value == "Small")
     {
         for (i = 0; i < 4; i++)
         {
@@ -244,8 +255,47 @@ function checklines()
     var value = document.getElementById("bingoSelect").value;
     var size = document.getElementById("bingoSize").value;
 
+    // Check lines on tiny bingo
+    if (size == "Tiny")
+    {
+        // Check vertical line
+        for (i = 0; i < 3; i++)
+        {
+            if (document.getElementById(i).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 3).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 6).style.backgroundColor == "rgb(187, 134, 252)")
+            {
+                btext.innerHTML="BINGO";
+                tryingB++;
+            }
+    
+        }
+    
+        // Check horizontal line
+        for (i = 0; i < 9; i += 3)
+        {
+            if (document.getElementById(i).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 1).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 2).style.backgroundColor == "rgb(187, 134, 252)")
+            {
+                btext.innerHTML="BINGO";
+                tryingB++;
+            }
+        }
+    
+        // Check diagonal LT to RB
+        if (document.getElementById(0).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(0 + 4).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(0 + 8).style.backgroundColor == "rgb(187, 134, 252)")
+        {
+            btext.innerHTML="BINGO";
+            tryingB++;
+        }
+    
+        // Check diagonal RT to LB
+        if (document.getElementById(2).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(2 + 2).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(2 + 4).style.backgroundColor == "rgb(187, 134, 252)")
+        {
+            btext.innerHTML="BINGO";
+            tryingB++;
+        }
+    }
+
     // Check lines on small bingo
-    if (size == "Small")
+    else if (size == "Small")
     {
 
         // Check vertical line

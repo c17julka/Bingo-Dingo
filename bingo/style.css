@@ -27,6 +27,12 @@ td.normal {
 
 td.small {
     height: 120px;
+    font-size: 18px;
+}
+
+td.tiny {
+    height: 170px;
+    font-size: 22px;
 }
 
 table {
