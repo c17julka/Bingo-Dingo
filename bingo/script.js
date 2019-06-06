@@ -264,7 +264,6 @@ function checklines()
             if (document.getElementById(i).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 3).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 6).style.backgroundColor == "rgb(187, 134, 252)")
             {
                 btext.innerHTML="BINGO";
-                tryingB++;
             }
     
         }
@@ -275,7 +274,6 @@ function checklines()
             if (document.getElementById(i).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 1).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 2).style.backgroundColor == "rgb(187, 134, 252)")
             {
                 btext.innerHTML="BINGO";
-                tryingB++;
             }
         }
     
@@ -283,14 +281,12 @@ function checklines()
         if (document.getElementById(0).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(0 + 4).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(0 + 8).style.backgroundColor == "rgb(187, 134, 252)")
         {
             btext.innerHTML="BINGO";
-            tryingB++;
         }
     
         // Check diagonal RT to LB
         if (document.getElementById(2).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(2 + 2).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(2 + 4).style.backgroundColor == "rgb(187, 134, 252)")
         {
             btext.innerHTML="BINGO";
-            tryingB++;
         }
     }
 
