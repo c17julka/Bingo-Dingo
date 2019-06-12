@@ -153,7 +153,10 @@ function genBingo()
             "Wins fight with 1HP left",
             "Gets stabbed by Wheel of (Un)fortune",
             "Insults enemy in the game",
-            "Suddenly talks about something random"
+            "Suddenly talks about something random",
+            "'Jorbs wins!",
+            "Compliments chatter",
+            "Talks about some smart shit"
         ],
 
         "Hot Fuzz (small)": // Hot Fuzz bingo (in progress)
