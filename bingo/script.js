@@ -154,7 +154,7 @@ function genBingo()
             "Gets stabbed by Wheel of (Un)fortune",
             "Insults enemy in the game",
             "Suddenly talks about something random",
-            "'Jorbs wins!",
+            "'Jorbs wins!'",
             "Compliments chatter",
             "Talks about some smart shit"
         ],
