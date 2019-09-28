@@ -458,9 +458,20 @@ function checkLocalStorage()
 {
     if (typeof(Storage) !== "undefined") 
         {
+          
+            if(localStorage.getItem("Size") === null)
+            {
+                localStorage.setItem("Size", "Normal");
+            }
+
+            if(localStorage.getItem("Selection") === null)
+            {
+                localStorage.setItem("Selection", "Eurovision");
+            }
+
             document.getElementById("bingoText").innerHTML = localStorage.getItem("Bingo");
             document.getElementById("bingoSize").value = localStorage.getItem("Size");
-            document.getElementById("bingolist").innerHTML = localStorage.getItem("Card");
+            document.getElementById("bingolist").innerHTML = localStorage.getItem("Card");          
 
             // Gets coloured in squares
             if (localStorage.getItem("Size") == "Tiny")
@@ -491,8 +502,7 @@ function checkLocalStorage()
                 }
             }
 
-            document.getElementById("bingoSelect").value = localStorage.getItem("Selection");
-            
+            document.getElementById("bingoSelect").value = localStorage.getItem("Selection");       
             
         } 
         else 
