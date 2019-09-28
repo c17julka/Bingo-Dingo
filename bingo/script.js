@@ -49,7 +49,7 @@
 //             ""
 //         ]
 
-var c = 0; // Counter for td ID
+ // Counter for td ID
 
 function genBingo()
 {
@@ -57,9 +57,12 @@ function genBingo()
     var value = document.getElementById("bingoSelect").value;
     var size = document.getElementById("bingoSize");
     var btext = document.getElementById("bingoText");
-    
     list.innerHTML = "";
 
+    // Counter for td id's
+    var c = 0;
+
+    // All bingos
     var bingos = {
         "Eurovision": // Eurovision bingo
         [
@@ -209,21 +212,22 @@ function genBingo()
     // 3x3 bingo
     if (size.value == "Tiny")
     {
+        // Generate goals
         for (i = 0; i < 3; i++)
         {
             list.innerHTML += "<tr><td class='tiny' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='tiny' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='tiny' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td></tr>";
 
         }
 
-        
+        // Sets local storages
         if (typeof(Storage) !== "undefined") 
         {
-
             localStorage.setItem("Size", size.value);
             localStorage.setItem("Selection", value);
             localStorage.setItem("Card", list.innerHTML);
+            localStorage.removeItem("Bingo");
 
-            // Resets previous colours
+            // // Resets previous colours
             for(j=0;j<25;j++)
             {
                 localStorage.removeItem(j);
@@ -238,20 +242,21 @@ function genBingo()
     // 4x4 bingo
     else if (size.value == "Small")
     {
+        // Generate goals
         for (i = 0; i < 4; i++)
         {
-            list.innerHTML += "<tr><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td></tr>";
-
-            
+            list.innerHTML += "<tr><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td></tr>";       
         }
 
+        // Sets local storages
         if (typeof(Storage) !== "undefined") 
         {
             localStorage.setItem("Size", size.value);
             localStorage.setItem("Selection", value);
             localStorage.setItem("Card", list.innerHTML);
+            localStorage.removeItem("Bingo");
 
-            // Resets previous colours
+            // // Resets previous colours
             for(j=0;j<25;j++)
             {
                 localStorage.removeItem(j);
@@ -267,19 +272,22 @@ function genBingo()
     // 5x5 bingo
     else 
     {
+        // Generate goals
         for (i = 0; i < 5; i++)
         {
             list.innerHTML += "<tr><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td></tr>";       
             
         }
 
+        // Sets local storages
         if (typeof(Storage) !== "undefined") 
         {
             localStorage.setItem("Size", size.value);
             localStorage.setItem("Selection", value);
             localStorage.setItem("Card", list.innerHTML);
+            localStorage.removeItem("Bingo");
 
-            // Resets previous colours
+            // // Resets previous colours
             for(j=0;j<25;j++)
             {
                 localStorage.removeItem(j);
@@ -300,8 +308,7 @@ function changecss(id)
 
     if (document.getElementById(id).style.backgroundColor) 
     {
-        document.getElementById(id).style.backgroundColor = "";
-        
+        document.getElementById(id).style.backgroundColor = "";      
        
     } 
     else 
@@ -326,8 +333,6 @@ function changecss(id)
 function checklines()
 {
     var btext = document.getElementById("bingoText");
-    var value = document.getElementById("bingoSelect").value;
-    var size = document.getElementById("bingoSize").value;
 
     // Check lines on tiny bingo
     if (localStorage.getItem("Size") == "Tiny")
@@ -338,6 +343,7 @@ function checklines()
             if (document.getElementById(i).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 3).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 6).style.backgroundColor == "rgb(187, 134, 252)")
             {
                 btext.innerHTML="BINGO";
+                localStorage.setItem("Bingo", btext.innerHTML);
             }
     
         }
@@ -348,6 +354,7 @@ function checklines()
             if (document.getElementById(i).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 1).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 2).style.backgroundColor == "rgb(187, 134, 252)")
             {
                 btext.innerHTML="BINGO";
+                localStorage.setItem("Bingo", btext.innerHTML);
             }
         }
     
@@ -355,12 +362,14 @@ function checklines()
         if (document.getElementById(0).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(0 + 4).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(0 + 8).style.backgroundColor == "rgb(187, 134, 252)")
         {
             btext.innerHTML="BINGO";
+            localStorage.setItem("Bingo", btext.innerHTML);
         }
     
         // Check diagonal RT to LB
         if (document.getElementById(2).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(2 + 2).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(2 + 4).style.backgroundColor == "rgb(187, 134, 252)")
         {
             btext.innerHTML="BINGO";
+            localStorage.setItem("Bingo", btext.innerHTML);
         }
     }
 
@@ -374,6 +383,7 @@ function checklines()
             if (document.getElementById(i).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 4).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 8).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 12).style.backgroundColor == "rgb(187, 134, 252)")
             {
                 btext.innerHTML="BINGO";
+                localStorage.setItem("Bingo", btext.innerHTML);
             }
 
         }
@@ -384,6 +394,7 @@ function checklines()
             if (document.getElementById(i).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 1).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 2).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 3).style.backgroundColor == "rgb(187, 134, 252)")
             {
                 btext.innerHTML="BINGO";
+                localStorage.setItem("Bingo", btext.innerHTML);
             }
         }
 
@@ -391,12 +402,14 @@ function checklines()
         if (document.getElementById(0).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(0 + 5).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(0 + 10).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(0 + 15).style.backgroundColor == "rgb(187, 134, 252)")
         {
             btext.innerHTML="BINGO";
+            localStorage.setItem("Bingo", btext.innerHTML);
         }
 
         // Check diagonal RT to LB
         if (document.getElementById(3).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(3 + 3).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(3 + 6).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(3 + 9).style.backgroundColor == "rgb(187, 134, 252)")
         {
             btext.innerHTML="BINGO";
+            localStorage.setItem("Bingo", btext.innerHTML);
         }
     }
     
@@ -409,6 +422,7 @@ function checklines()
             if (document.getElementById(i).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 5).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 10).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 15).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 20).style.backgroundColor == "rgb(187, 134, 252)")
             {
                 btext.innerHTML="BINGO";
+                localStorage.setItem("Bingo", btext.innerHTML);
             }
 
         }
@@ -419,6 +433,7 @@ function checklines()
             if (document.getElementById(i).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 1).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 2).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 3).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 4).style.backgroundColor == "rgb(187, 134, 252)")
             {
                 btext.innerHTML="BINGO";
+                localStorage.setItem("Bingo", btext.innerHTML);
             }
         }
 
@@ -426,21 +441,24 @@ function checklines()
         if (document.getElementById(0).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(0 + 6).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(0 + 12).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(0 + 18).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(0 + 24).style.backgroundColor == "rgb(187, 134, 252)")
         {
             btext.innerHTML="BINGO";
+            localStorage.setItem("Bingo", btext.innerHTML);
         }
 
         // Check diagonal RT to LB
         if (document.getElementById(4).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(4 + 4).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(4 + 8).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(4 + 12).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(4 + 16).style.backgroundColor == "rgb(187, 134, 252)")
         {
             btext.innerHTML="BINGO";
+            localStorage.setItem("Bingo", btext.innerHTML);
         }
     }
 }
 
+// Retrieve local storages when page load
 function checkLocalStorage()
 {
     if (typeof(Storage) !== "undefined") 
         {
-            // Gets bingo card and size
+            document.getElementById("bingoText").innerHTML = localStorage.getItem("Bingo");
             document.getElementById("bingoSize").value = localStorage.getItem("Size");
             document.getElementById("bingolist").innerHTML = localStorage.getItem("Card");
 
