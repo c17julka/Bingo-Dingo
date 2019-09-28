@@ -49,13 +49,15 @@
 //             ""
 //         ]
 
+var c = 0; // Counter for td ID
+
 function genBingo()
 {
     var list = document.getElementById("bingolist");
     var value = document.getElementById("bingoSelect").value;
     var size = document.getElementById("bingoSize");
     var btext = document.getElementById("bingoText");
-    var c = 0; // Counter for td ID
+    
     list.innerHTML = "";
 
     var bingos = {
@@ -210,7 +212,27 @@ function genBingo()
         for (i = 0; i < 3; i++)
         {
             list.innerHTML += "<tr><td class='tiny' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='tiny' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='tiny' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td></tr>";
+
         }
+
+        
+        if (typeof(Storage) !== "undefined") 
+        {
+
+            localStorage.setItem("Size", size.value);
+            localStorage.setItem("Selection", value);
+            localStorage.setItem("Card", list.innerHTML);
+
+            // Resets previous colours
+            for(j=0;j<25;j++)
+            {
+                localStorage.removeItem(j);
+            }
+        } 
+        else 
+        {
+        }
+        
     }
 
     // 4x4 bingo
@@ -219,6 +241,25 @@ function genBingo()
         for (i = 0; i < 4; i++)
         {
             list.innerHTML += "<tr><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td></tr>";
+
+            
+        }
+
+        if (typeof(Storage) !== "undefined") 
+        {
+            localStorage.setItem("Size", size.value);
+            localStorage.setItem("Selection", value);
+            localStorage.setItem("Card", list.innerHTML);
+
+            // Resets previous colours
+            for(j=0;j<25;j++)
+            {
+                localStorage.removeItem(j);
+            }
+            
+        } 
+        else 
+        {
         }
 
     }
@@ -228,7 +269,24 @@ function genBingo()
     {
         for (i = 0; i < 5; i++)
         {
-            list.innerHTML += "<tr><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td></tr>";        
+            list.innerHTML += "<tr><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td></tr>";       
+            
+        }
+
+        if (typeof(Storage) !== "undefined") 
+        {
+            localStorage.setItem("Size", size.value);
+            localStorage.setItem("Selection", value);
+            localStorage.setItem("Card", list.innerHTML);
+
+            // Resets previous colours
+            for(j=0;j<25;j++)
+            {
+                localStorage.removeItem(j);
+            }
+        } 
+        else 
+        {
         }
     }
 
@@ -239,13 +297,26 @@ function genBingo()
 // Click on goal to fill it
 function changecss(id)
 {
+
     if (document.getElementById(id).style.backgroundColor) 
     {
         document.getElementById(id).style.backgroundColor = "";
+        
+       
     } 
     else 
     {
         document.getElementById(id).style.backgroundColor = "rgb(187, 134, 252)";
+        
+    }
+
+    // Saves coloured squares
+    if (typeof(Storage) !== "undefined") 
+    {
+        localStorage.setItem(id, document.getElementById(id).style.backgroundColor);
+    } 
+    else 
+    {
     }
 
     checklines();
@@ -259,7 +330,7 @@ function checklines()
     var size = document.getElementById("bingoSize").value;
 
     // Check lines on tiny bingo
-    if (size == "Tiny")
+    if (localStorage.getItem("Size") == "Tiny")
     {
         // Check vertical line
         for (i = 0; i < 3; i++)
@@ -294,7 +365,7 @@ function checklines()
     }
 
     // Check lines on small bingo
-    else if (size == "Small")
+    else if (localStorage.getItem("Size") == "Small")
     {
 
         // Check vertical line
@@ -330,7 +401,7 @@ function checklines()
     }
     
     // Check lines on normal bingo
-    else
+    else if (localStorage.getItem("Size") == "Normal")
     {
         // Check vertical line
         for (i = 0; i < 5; i++)
@@ -363,4 +434,51 @@ function checklines()
             btext.innerHTML="BINGO";
         }
     }
+}
+
+function checkLocalStorage()
+{
+    if (typeof(Storage) !== "undefined") 
+        {
+            // Gets bingo card and size
+            document.getElementById("bingoSize").value = localStorage.getItem("Size");
+            document.getElementById("bingolist").innerHTML = localStorage.getItem("Card");
+
+            // Gets coloured in squares
+            if (localStorage.getItem("Size") == "Tiny")
+            for(i=0;i<9;i++)
+            {
+                if (localStorage.hasOwnProperty(i))
+                {
+                    document.getElementById(i).style.backgroundColor = localStorage.getItem(i);
+                }
+                
+            }
+
+            if (localStorage.getItem("Size") == "Small")
+            for(i=0;i<16;i++)
+            {
+                if (localStorage.hasOwnProperty(i))
+                {
+                    document.getElementById(i).style.backgroundColor = localStorage.getItem(i);
+                }
+            }
+
+            if (localStorage.getItem("Size") == "Normal")
+            for(i=0;i<25;i++)
+            {
+                if (localStorage.hasOwnProperty(i))
+                {
+                    document.getElementById(i).style.backgroundColor = localStorage.getItem(i);
+                }
+            }
+
+            document.getElementById("bingoSelect").value = localStorage.getItem("Selection");
+            
+            
+        } 
+        else 
+        {
+        }
+
 }

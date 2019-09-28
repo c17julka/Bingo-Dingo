@@ -12,13 +12,13 @@
 
 </head>
 
-<body onload="genBingo()">
+<body onload="checkLocalStorage()">
 
     <div id="bingodiv">  
 
         <div id="inputdiv">
             <h1>Select Bingo:</h1>
-            <select class="dropdown" id="bingoSelect" onchange="genBingo()">
+            <select class="dropdown" id="bingoSelect">
                 <option value="Eurovision">Eurovision</option>
                 <option value="Kdrama Rom Com">Kdrama Rom Com</option>
                 <option value="Hot Fuzz (small)">Hot Fuzz (small)</option>
@@ -28,12 +28,14 @@
         
         <div id="sizediv">
             <h1>Select Size:</h1>
-            <select class="dropdown" id="bingoSize" onchange="genBingo()">
+            <select class="dropdown" id="bingoSize">
                 <option value="Normal">Normal</option>
                 <option value="Small">Small</option>
                 <option value="Tiny">Tiny</option>
             </select>
         </div>
+
+        
 
         <div id="btndiv">
             <button type="button" onclick="genBingo()">Generate new bingo</button>
