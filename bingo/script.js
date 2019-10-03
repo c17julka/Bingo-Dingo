@@ -182,6 +182,30 @@ function genBingo()
             ":)",
             "First kiss", 
             "Male lead is a Bitch!"
+        ],
+
+        "The Room (small)": // The Room bingo
+        [
+            "Framed Spoons", 
+            "Cheep Cheep Cheep", 
+            "'You're tearing me apart, Lisa!'", 
+            "'I just wanna watch you guys'", 
+            "The Laugh", 
+            "'I definitely have breast cancer'",
+            "'Oh hi doggy'", 
+            "Drug dealer",
+            "'Keep your stupid comments in your pocket'",
+            "'Anyway, how's your sex life?'", 
+            "Belly Button Sex", 
+            "'Oh hi Mark'", 
+            "'It's not true...'", 
+            "'I did naaaawt'", 
+            "Suicide",
+            "Football", 
+            "'The stories you tell, Mark'",
+            "The Laugh, again ;)",
+            "Golden Gate Bridge ",
+            "Scotchka"
         ]
     }           
 
