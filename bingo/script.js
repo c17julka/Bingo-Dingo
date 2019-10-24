@@ -127,7 +127,12 @@ function genBingo()
             "Product placement",
             "Hair pulling",
             "Karaoke",
-            "Eyes open kiss"
+            "Eyes open kiss",
+            "Lies",
+            "Female lead gets bullied",
+            "'Fighting!'",
+            "Jealousy",
+            "Nightmare"
         ],
 
         "jorbs": // jorbs (joinrbs) bingo (in progress)
@@ -161,7 +166,10 @@ function genBingo()
             "Suddenly talks about something random",
             "'Jorbs wins!'",
             "Compliments chatter",
-            "Talks about some smart shit"
+            "Talks about some smart shit",
+            "Starts singing",
+            "Does math wrong",
+            "Talks shit about Watcher"
         ],
 
         "Hot Fuzz (small)": // Hot Fuzz bingo (in progress)
