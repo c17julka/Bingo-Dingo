@@ -532,12 +532,32 @@ function checklines()
     }
 }
 
+function displaySeed()
+{
+    
+    if (document.getElementById("useSeed").checked)
+    {
+        document.getElementById("seedinput").style.display = "block";
+        localStorage.setItem("SeedDisplay", "block");  
+        localStorage.setItem("Checkbox", document.getElementById("useSeed").checked);
+    }
+    else 
+    {
+        document.getElementById("seedinput").style.display = "none";
+        localStorage.setItem("SeedDisplay", "none");
+        localStorage.setItem("Checkbox", document.getElementById("useSeed").checked);
+    }
+    
+}
+
+
 // Retrieve local storages when page load
 function checkLocalStorage()
 {
+
     if (typeof(Storage) !== "undefined") 
         {
-          
+
             if(localStorage.getItem("Size") === null)
             {
                 localStorage.setItem("Size", "Normal");
@@ -550,7 +570,10 @@ function checkLocalStorage()
 
             document.getElementById("bingoText").innerHTML = localStorage.getItem("Bingo");
             document.getElementById("bingoSize").value = localStorage.getItem("Size");
-            document.getElementById("bingolist").innerHTML = localStorage.getItem("Card");          
+            document.getElementById("bingolist").innerHTML = localStorage.getItem("Card");
+            document.getElementById("seedinput").value = localStorage.getItem("Seed");
+            document.getElementById("seedInput").style.display = localStorage.getItem("SeedDisplay");
+            document.getElementById("useSeed").checked = localStorage.getItem("Checkbox");     
 
             // Gets coloured in squares
             if (localStorage.getItem("Size") == "Tiny")
