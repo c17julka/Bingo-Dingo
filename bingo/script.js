@@ -59,6 +59,21 @@ function genBingo()
     var btext = document.getElementById("bingoText");
     list.innerHTML = "";
 
+    // Vars for seeding
+    var randomSeed = Math.floor(Math.random() * 2147483647);
+    var seed = randomSeed;
+
+    // Sets local storages
+    if (typeof(Storage) !== "undefined") 
+    {
+        localStorage.setItem("Seed", seed);
+        document.getElementById("seedinput").value = localStorage.getItem("Seed");
+
+    } 
+    else 
+    {
+    }
+
     // Counter for td id's
     var c = 0;
 
@@ -217,9 +232,41 @@ function genBingo()
         ]
     }           
 
+    // -----
+    // Returns float used for seed https://stackoverflow.com/a/53758827
+    function random() 
+    {
+        var x = Math.sin(seed++) * 2147483646;
+        return x - Math.floor(x);
+    }
+    
+    function shuffleBingoList(array, seed) 
+    {
+        var arrayL = array.length, t, i;
+    
+        // While there remain elements to shuffle…
+        while (arrayL) 
+        {
+            // Pick a remaining element…
+            i = Math.floor(random(seed) * arrayL--);
+
+            // And swap it with the current element.
+            t = array[arrayL];
+            array[arrayL] = array[i];
+            array[i] = t;
+            ++seed; 
+        }
+    
+        return array;
+    }
+    // -----
+
+    //console.log(bingos[value]);
+    console.log(shuffleBingoList(bingos[value], 23));
     // Generates random data from array then deletes it
     function wheel(val)
     {
+
         // Do at own risk! Generates normal sized bingo on small bingos
         if (size.value == "Normal" && value.includes("(small)"))
         {
@@ -247,7 +294,7 @@ function genBingo()
         // Generate goals
         for (i = 0; i < 3; i++)
         {
-            list.innerHTML += "<tr><td class='tiny' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='tiny' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='tiny' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td></tr>";
+            list.innerHTML += "<tr><td class='tiny' onclick='changecss("+ c +")' id='"+ c++ +"'>" + shuffleBingoList(bingos[value][0], localStorage.getItem("Seed")) + "</td><td class='tiny' onclick='changecss("+ c +")' id='"+ c++ +"'>" + shuffleBingoList(bingos[value][1], localStorage.getItem("Seed")) + "</td><td class='tiny' onclick='changecss("+ c +")' id='"+ c++ +"'>" + shuffleBingoList(bingos[value][2], localStorage.getItem("Seed")) + "</td></tr>";
 
         }
 
