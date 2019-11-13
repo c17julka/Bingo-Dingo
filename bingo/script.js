@@ -59,23 +59,48 @@ function genBingo()
     var btext = document.getElementById("bingoText");
     list.innerHTML = "";
 
-    // Vars for seeding
-    var randomSeed = Math.floor(Math.random() * 2147483647);
-    var seed = randomSeed;
-
-    // Sets local storages
-    if (typeof(Storage) !== "undefined") 
-    {
-        localStorage.setItem("Seed", seed);
-        document.getElementById("seedinput").value = localStorage.getItem("Seed");
-
-    } 
-    else 
-    {
-    }
-
     // Counter for td id's
     var c = 0;
+
+    // Vars for seeding
+    var icounter = 0;
+    var seedinput = document.getElementById("seedinput").value;
+    var seed;
+
+    // Set seed var
+    // Randomize seed on gen btn click
+    if (!document.getElementById("useSeed").checked)
+    {
+        var randomSeed = Math.floor(Math.random() * 2147483647);
+        seed = randomSeed;
+
+        // Sets local storages
+        if (typeof(Storage) !== "undefined") 
+        {
+            localStorage.setItem("Seed", seed);
+            document.getElementById("seedinput").value = localStorage.getItem("Seed");
+
+        } 
+        else 
+        {
+        }
+    }
+    // Use custom seed
+    else
+    {
+        seed = seedinput;
+
+        // Sets local storages
+        if (typeof(Storage) !== "undefined") 
+        {
+            localStorage.setItem("Seed", seed);
+            document.getElementById("seedinput").value = localStorage.getItem("Seed");
+
+        } 
+        else 
+        {
+        }
+    } 
 
     // All bingos
     var bingos = {
@@ -259,29 +284,40 @@ function genBingo()
     
         return array;
     }
+    // Shuffled bingo list
+    var blist = shuffleBingoList(bingos[value], localStorage.getItem("Seed"));
     // -----
 
-    //console.log(bingos[value]);
-    console.log(shuffleBingoList(bingos[value], 23));
-    // Generates random data from array then deletes it
-    function wheel(val)
+    function getBingoArray(list)
     {
-
         // Do at own risk! Generates normal sized bingo on small bingos
-        if (size.value == "Normal" && value.includes("(small)"))
+        // WORK IN PROGRESS !!! 
+        if (size.value == "Normal" && value.includes("(small"))
         {
-            var index = Math.floor(Math.random() * bingos[val].length);
-            var r = bingos[val][index];
-            return r;
+            
+            // Pick first element of shuffled bingo list
+            if (icounter > blist.length)
+            {
+                localStorage.setItem("Seed", seed++);
+            }       
+            var elem = blist[icounter];
+            icounter++;
+            if (icounter > blist.length)
+            {
+                localStorage.setItem("Seed", seed--);
+            }     
+            return elem;
         }
 
-        // Normal bingos for normal bingo people
+        // "Normal"-setting bingo
         else
         {
-            var index = Math.floor(Math.random() * bingos[val].length);
-            var r = bingos[val][index];
-            bingos[val].splice(index, 1);
-            return r;
+            // Pick first element of shuffled bingo list, then delete it
+            console.log(blist);
+            var elem = blist[0];
+            blist.splice(elem, 1);
+            
+            return elem;
         }
         
     }
@@ -294,8 +330,7 @@ function genBingo()
         // Generate goals
         for (i = 0; i < 3; i++)
         {
-            list.innerHTML += "<tr><td class='tiny' onclick='changecss("+ c +")' id='"+ c++ +"'>" + shuffleBingoList(bingos[value][0], localStorage.getItem("Seed")) + "</td><td class='tiny' onclick='changecss("+ c +")' id='"+ c++ +"'>" + shuffleBingoList(bingos[value][1], localStorage.getItem("Seed")) + "</td><td class='tiny' onclick='changecss("+ c +")' id='"+ c++ +"'>" + shuffleBingoList(bingos[value][2], localStorage.getItem("Seed")) + "</td></tr>";
-
+            list.innerHTML += "<tr><td class='tiny' onclick='changecss("+ c +")' id='"+ c++ +"'>" + getBingoArray(value) + "</td><td class='tiny' onclick='changecss("+ c +")' id='"+ c++ +"'>" + getBingoArray(value) + "</td><td class='tiny' onclick='changecss("+ c +")' id='"+ c++ +"'>" + getBingoArray(value) + "</td></tr>";
         }
 
         // Sets local storages
@@ -324,7 +359,7 @@ function genBingo()
         // Generate goals
         for (i = 0; i < 4; i++)
         {
-            list.innerHTML += "<tr><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td></tr>";       
+            list.innerHTML += "<tr><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + getBingoArray(value) + "</td><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + getBingoArray(value) + "</td><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + getBingoArray(value) + "</td><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + getBingoArray(value) + "</td></tr>";       
         }
 
         // Sets local storages
@@ -354,7 +389,7 @@ function genBingo()
         // Generate goals
         for (i = 0; i < 5; i++)
         {
-            list.innerHTML += "<tr><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td></tr>";       
+            list.innerHTML += "<tr><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + getBingoArray(value) + "</td><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + getBingoArray(value) + "</td><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + getBingoArray(value) + "</td><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + getBingoArray(value) + "</td><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + getBingoArray(value) + "</td></tr>";       
             
         }
 
@@ -532,23 +567,23 @@ function checklines()
     }
 }
 
-function displaySeed()
-{
+// no workey workey function displaySeed()
+// {
     
-    if (document.getElementById("useSeed").checked)
-    {
-        document.getElementById("seedinput").style.display = "block";
-        localStorage.setItem("SeedDisplay", "block");  
-        localStorage.setItem("Checkbox", document.getElementById("useSeed").checked);
-    }
-    else 
-    {
-        document.getElementById("seedinput").style.display = "none";
-        localStorage.setItem("SeedDisplay", "none");
-        localStorage.setItem("Checkbox", document.getElementById("useSeed").checked);
-    }
+//     if (document.getElementById("useSeed").checked)
+//     {
+//         document.getElementById("seedinput").style.display = "block";
+//         localStorage.setItem("SeedDisplay", "block");  
+//         localStorage.setItem("Checkbox", document.getElementById("useSeed").checked);
+//     }
+//     else 
+//     {
+//         document.getElementById("seedinput").style.display = "none";
+//         localStorage.setItem("SeedDisplay", "none");
+//         localStorage.setItem("Checkbox", document.getElementById("useSeed").checked);
+//     }
     
-}
+// }
 
 
 // Retrieve local storages when page load
@@ -572,8 +607,8 @@ function checkLocalStorage()
             document.getElementById("bingoSize").value = localStorage.getItem("Size");
             document.getElementById("bingolist").innerHTML = localStorage.getItem("Card");
             document.getElementById("seedinput").value = localStorage.getItem("Seed");
-            document.getElementById("seedInput").style.display = localStorage.getItem("SeedDisplay");
-            document.getElementById("useSeed").checked = localStorage.getItem("Checkbox");     
+            //doesnt work yet lol document.getElementById("seedInput").style.display = localStorage.getItem("SeedDisplay");
+            document.getElementById("useSeed").checked = localStorage.getItem("Checkbox");
 
             // Gets coloured in squares
             if (localStorage.getItem("Size") == "Tiny")
