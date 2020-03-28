@@ -36,14 +36,15 @@
             </select>
         </div>
 
-        <div id="btndiv">
-            <button type="button" onclick="genBingo()">Generate new bingo</button>
-        </div> 
-
         <div id="seeddiv">       
-            Use custom seed: <input type="checkbox" id="useSeed"> 
+            <label>Enable custom seed: </label> 
+            <input type="checkbox" id="useSeed"> 
             <input id="seedinput" type="number" name="seedNum" placeholder="Seed...">
         </div>
+
+        <div id="btndiv">
+            <button type="button" onclick="genBingo()">Generate new bingo</button>
+        </div>  
 
         <div id="bingo">
             <table id="bingolist"></table>

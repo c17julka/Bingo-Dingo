@@ -62,12 +62,31 @@ table {
 
 #seeddiv {
     font-weight: bold;
-    margin-left: 5px;
+}
+
+#seedinput {
+    width: 200px;
+    margin-top: 5px;
 }
 
 h1 {
-    margin: 0px 0px 5px 5px;
+    margin: 0px 0px 5px 0px;
     font-size: 15px;
+}
+
+#useSeed  {
+    width: 20px;
+    height: 20px;
+    margin-bottom: 0px;
+    vertical-align: middle;
+}
+
+#useSeed:hover, button:hover, select:hover {
+    cursor: pointer;
+}
+
+label {
+    vertical-align: middle;
 }
 
 .dropdown {
@@ -77,21 +96,9 @@ h1 {
     padding: 2px 20px;
     border-radius: 10px;
     font-size: 16px;
-    margin-left: 5px;
 }
 
-button {
-    background-color: #252525;
-    color: white;
-    border: 2px solid #BB86FC;
-    padding: 6px 23px;
-    border-radius: 10px;
-    font-size: 22px;
-    margin-bottom: 10px;
-    margin-left: 5px;
-}
-
-input {
+button, input {
     background-color: #252525;
     color: white;
     border: 2px solid #BB86FC;
@@ -101,7 +108,7 @@ input {
     margin-bottom: 10px;
 }
 
-button:focus, select:focus {
+button:focus, select:focus, input:focus {
     outline: none;
 }
 
