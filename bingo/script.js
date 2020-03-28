@@ -168,11 +168,14 @@ function genBingo()
             "Hair pulling",
             "Karaoke",
             "Eyes open kiss",
-            "Lies",
+            "Unneccessary lies",
             "Female lead gets bullied",
             "'Fighting!'",
             "Jealousy",
-            "Nightmare"
+            "Nightmare",
+            "Super senses",
+            "Peace sign"
+            
         ],
 
         "jorbs": // jorbs (joinrbs) bingo (in progress)
@@ -313,7 +316,6 @@ function genBingo()
         else
         {
             // Pick first element of shuffled bingo list, then delete it
-            console.log(blist);
             var elem = blist[0];
             blist.splice(elem, 1);
             
@@ -339,6 +341,7 @@ function genBingo()
             localStorage.setItem("Size", size.value);
             localStorage.setItem("Selection", value);
             localStorage.setItem("Card", list.innerHTML);
+            localStorage.setItem("Checkbox", document.getElementById("useSeed").checked);
             localStorage.removeItem("Bingo");
 
             // // Resets previous colours
@@ -368,6 +371,7 @@ function genBingo()
             localStorage.setItem("Size", size.value);
             localStorage.setItem("Selection", value);
             localStorage.setItem("Card", list.innerHTML);
+            localStorage.setItem("Checkbox", document.getElementById("useSeed").checked);
             localStorage.removeItem("Bingo");
 
             // // Resets previous colours
@@ -399,6 +403,7 @@ function genBingo()
             localStorage.setItem("Size", size.value);
             localStorage.setItem("Selection", value);
             localStorage.setItem("Card", list.innerHTML);
+            localStorage.setItem("Checkbox", document.getElementById("useSeed").checked);
             localStorage.removeItem("Bingo");
 
             // // Resets previous colours
@@ -567,24 +572,6 @@ function checklines()
     }
 }
 
-// no workey workey function displaySeed()
-// {
-    
-//     if (document.getElementById("useSeed").checked)
-//     {
-//         document.getElementById("seedinput").style.display = "block";
-//         localStorage.setItem("SeedDisplay", "block");  
-//         localStorage.setItem("Checkbox", document.getElementById("useSeed").checked);
-//     }
-//     else 
-//     {
-//         document.getElementById("seedinput").style.display = "none";
-//         localStorage.setItem("SeedDisplay", "none");
-//         localStorage.setItem("Checkbox", document.getElementById("useSeed").checked);
-//     }
-    
-// }
-
 
 // Retrieve local storages when page load
 function checkLocalStorage()
@@ -607,8 +594,7 @@ function checkLocalStorage()
             document.getElementById("bingoSize").value = localStorage.getItem("Size");
             document.getElementById("bingolist").innerHTML = localStorage.getItem("Card");
             document.getElementById("seedinput").value = localStorage.getItem("Seed");
-            //doesnt work yet lol document.getElementById("seedInput").style.display = localStorage.getItem("SeedDisplay");
-            document.getElementById("useSeed").checked = localStorage.getItem("Checkbox");
+            
 
             // Gets coloured in squares
             if (localStorage.getItem("Size") == "Tiny")
@@ -639,8 +625,8 @@ function checkLocalStorage()
                 }
             }
 
-            document.getElementById("bingoSelect").value = localStorage.getItem("Selection");       
-            
+            document.getElementById("bingoSelect").value = localStorage.getItem("Selection");
+            document.getElementById("useSeed").checked = JSON.parse(localStorage.getItem("Checkbox"));
         } 
         else 
         {
