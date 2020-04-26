@@ -257,6 +257,34 @@ function genBingo()
             "The Laugh, again ;)",
             "Golden Gate Bridge ",
             "Scotchka"
+        ],
+        "Hana Yori Dango": // 'name' bingo (normal size)
+        [
+            "Jun Pyo gets beat up", 
+            "Jun Pyo gets hit in the face", 
+            "Jan Di yells very loudly", 
+            "Ji Hoo gives shade", 
+            "Random English from Woo Bin", 
+            "F4 walks in slow motion",
+            "You desperately want to hit Jun Pyo in the crotch", 
+            "You desperately want to hit Jun Pyo in the throat",
+            "Jun Pyo being a rich bitch", 
+            "Jun Pyo making others do shit for him", 
+            "Jan Di's parents are being bitches", 
+            "Jan Di hits someone", 
+            "Weird bullying", 
+            "Where are the teachers?",
+            "F4 Death Note", 
+            "WTF Ji Hoo?!",
+            "Yi Jung + Ga Eul moment", 
+            "Jan Di swims", 
+            "Jan Di gobbles down food",
+            "Ji Hoo looks constipated",
+            "Tragic flashback",
+            "Oh shes fine",
+            "Says F4",
+            "",
+            ""
         ]
     }           
 
