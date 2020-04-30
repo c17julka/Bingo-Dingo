@@ -220,7 +220,7 @@ function genBingo()
             "Orders a drink", 
             "Says 'Greater good'", 
             "Black hood", 
-            "Danny ask Nick a question", 
+            "Danny asks Nick a question", 
             "Says 'Angle'", 
             "Someone gets shot",
             "Michal says 'Yarp'", 
@@ -258,6 +258,7 @@ function genBingo()
             "Golden Gate Bridge ",
             "Scotchka"
         ],
+
         "Hana Yori Dango": // 'name' bingo (normal size)
         [
             "Jun Pyo gets beat up", 
@@ -329,6 +330,39 @@ function genBingo()
             "Die by playing a card",
             "Complete a run (Heart not required) on A15 or higher"
         ],
+        "Horror Movies": // Generic horror movies bingo
+        [
+            "Jumpscare", 
+            "Creepy smile", 
+            "Black guy dies", 
+            "Black guy dies first", 
+            "Sexy time", 
+            "Creepy kid",
+            "Build up - no jumpscare", 
+            "Dead animal",
+            "Dead person comes back alive", 
+            "Creepy mirror", 
+            "Cat", 
+            "Someone trips", 
+            "Gunshot", 
+            "Dead body",
+            "Basement", 
+            "Spooky house",
+            "Lights go out", 
+            "Under the bed!", 
+            "Behind you!",
+            "Bugs",
+            "Alcohol",
+            "Tripping while running",
+            "Doll",
+            "Shit ton of blood",
+            "Loud screaming",
+            "Flickering lights",
+            "Doors open or close on their own",
+            "Object flies on their own",
+            "Teenagers",
+            "Shitty CGI"
+        ]
     }           
 
     // -----
