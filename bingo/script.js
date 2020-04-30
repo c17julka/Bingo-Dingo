@@ -62,6 +62,46 @@ function genBingo()
     // Counter for td id's
     var c = 0;
 
+    // Vars for seeding
+    var icounter = 0;
+    var seedinput = document.getElementById("seedinput").value;
+    var seed;
+
+    // Set seed var
+    // Randomize seed on gen btn click
+    if (!document.getElementById("useSeed").checked)
+    {
+        var randomSeed = Math.floor(Math.random() * 2147483647);
+        seed = randomSeed;
+
+        // Sets local storages
+        if (typeof(Storage) !== "undefined") 
+        {
+            localStorage.setItem("Seed", seed);
+            document.getElementById("seedinput").value = localStorage.getItem("Seed");
+
+        } 
+        else 
+        {
+        }
+    }
+    // Use custom seed
+    else
+    {
+        seed = seedinput;
+
+        // Sets local storages
+        if (typeof(Storage) !== "undefined") 
+        {
+            localStorage.setItem("Seed", seed);
+            document.getElementById("seedinput").value = localStorage.getItem("Seed");
+
+        } 
+        else 
+        {
+        }
+    } 
+
     // All bingos
     var bingos = {
         "Eurovision": // Eurovision bingo
@@ -128,11 +168,14 @@ function genBingo()
             "Hair pulling",
             "Karaoke",
             "Eyes open kiss",
-            "Lies",
+            "Unneccessary lies",
             "Female lead gets bullied",
             "'Fighting!'",
             "Jealousy",
-            "Nightmare"
+            "Nightmare",
+            "Super senses",
+            "Peace sign"
+            
         ],
 
         "jorbs": // jorbs (joinrbs) bingo (in progress)
@@ -216,6 +259,77 @@ function genBingo()
             "Scotchka"
         ],
 
+        "Hana Yori Dango": // 'name' bingo (normal size)
+        [
+            "Jun Pyo gets beat up", 
+            "Jun Pyo gets hit in the face", 
+            "Jan Di yells very loudly", 
+            "Ji Hoo gives shade", 
+            "Random English from Woo Bin", 
+            "F4 walks in slow motion",
+            "You desperately want to hit Jun Pyo in the crotch", 
+            "You desperately want to hit Jun Pyo in the throat",
+            "Jun Pyo being a rich bitch", 
+            "Jun Pyo making others do shit for him", 
+            "Jan Di's parents are being bitches", 
+            "Jan Di hits someone", 
+            "Weird bullying", 
+            "Where are the teachers?",
+            "F4 Death Note", 
+            "WTF Ji Hoo?!",
+            "Yi Jung + Ga Eul moment", 
+            "Jan Di swims", 
+            "Jan Di gobbles down food",
+            "Ji Hoo looks constipated",
+            "Tragic flashback",
+            "'Oh she's fine'",
+            "Someone says F4",
+            "Scoffing",
+            "Jan Di should not be falling for Jun Pyo right now"
+        ],
+        "Slay the Spire": // 'name' bingo (normal size)
+        [
+            "Spend 3 energy playing shivs in 1 turn",
+            "Defeat a boss with 1 HP remaining",
+            "Reach 100 block during combat",
+            "Reach 150 Max HP",
+            "Obtain 15 relics in a run",
+            "Have a Claw deal 50 dmg",
+            "Slay the Corrupt Heart",
+            "Reach 10 energy in 1 turn",
+            "Win a fight on the first turn",
+            "Obtain 5 copies of the same card (non-starter, non-event cards)",
+            "Draw a full hand of cards without the usage of cards",
+            "Obtain 3 rare cards",
+            "Obtain 3 curse cards",
+            "Lower an enemy's strength to -16",
+            "Defeat all 3 unique elites in an act",
+            "Defeat the Act 1 boss in under 4 minutes",
+            "Win a fight without playing an attack",
+            "Have a full hand with 10 different cards",
+            "Play a single card granting 41 block",
+            "Defeat a boss as Silent without applying poison in the fight",
+            "Kill Transient before it kills itself",
+            "Channel 8 orbs in 1 turn",
+            "Kill 4 enemies in 1 turn",
+            "Have 0 cards in your discard pile and your draw pile",
+            "Have under 30 Max HP",
+            "Defeat a boss as Defect without channeling an orb via cards",
+            "Defeat the Act 1 boss with no uncommon or rare cards in your deck",
+            "Have 4 debuffs on a single enemy at the same time",
+            "Die to an enemy that has 1 HP left",
+            "Die to an event",
+            "Upgrade a Searing Blow 8 times",
+            "Travel to 6 ? nodes in a single act",
+            "Finish an act without traveling to any ? nodes",
+            "Use a Smoke Bomb in the Act 4 elite fight",
+            "Complete a run (Heart not required) with 0 relics that grant energy",
+            "Buy 3 relics in a single shop",
+            "Heal in 3 different ways during a single fight",
+            "Have 3 innate cards in your deck",
+            "Die by playing a card",
+            "Complete a run (Heart not required) on A15 or higher"
+        ],
         "Horror Movies": // Generic horror movies bingo
         [
             "Jumpscare", 
@@ -248,27 +362,69 @@ function genBingo()
             "Object flies on their own",
             "Teenagers",
             "Shitty CGI"
-        ],
+        ]
     }           
 
-    // Generates random data from array then deletes it
-    function wheel(val)
+    // -----
+    // Returns float used for seed https://stackoverflow.com/a/53758827
+    function random() 
+    {
+        var x = Math.sin(seed++) * 2147483646;
+        return x - Math.floor(x);
+    }
+    
+    function shuffleBingoList(array, seed) 
+    {
+        var arrayL = array.length, t, i;
+    
+        // While there remain elements to shuffle…
+        while (arrayL) 
+        {
+            // Pick a remaining element…
+            i = Math.floor(random(seed) * arrayL--);
+
+            // And swap it with the current element.
+            t = array[arrayL];
+            array[arrayL] = array[i];
+            array[i] = t;
+            ++seed; 
+        }
+    
+        return array;
+    }
+    // Shuffled bingo list
+    var blist = shuffleBingoList(bingos[value], localStorage.getItem("Seed"));
+    // -----
+
+    function getBingoArray(list)
     {
         // Do at own risk! Generates normal sized bingo on small bingos
-        if (size.value == "Normal" && value.includes("(small)"))
+        // WORK IN PROGRESS !!! 
+        if (size.value == "Normal" && value.includes("(small"))
         {
-            var index = Math.floor(Math.random() * bingos[val].length);
-            var r = bingos[val][index];
-            return r;
+            
+            // Pick first element of shuffled bingo list
+            if (icounter > blist.length)
+            {
+                localStorage.setItem("Seed", seed++);
+            }       
+            var elem = blist[icounter];
+            icounter++;
+            if (icounter > blist.length)
+            {
+                localStorage.setItem("Seed", seed--);
+            }     
+            return elem;
         }
 
-        // Normal bingos for normal bingo people
+        // "Normal"-setting bingo
         else
         {
-            var index = Math.floor(Math.random() * bingos[val].length);
-            var r = bingos[val][index];
-            bingos[val].splice(index, 1);
-            return r;
+            // Pick first element of shuffled bingo list, then delete it
+            var elem = blist[0];
+            blist.splice(elem, 1);
+            
+            return elem;
         }
         
     }
@@ -281,8 +437,7 @@ function genBingo()
         // Generate goals
         for (i = 0; i < 3; i++)
         {
-            list.innerHTML += "<tr><td class='tiny' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='tiny' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='tiny' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td></tr>";
-
+            list.innerHTML += "<tr><td class='tiny' onclick='changecss("+ c +")' id='"+ c++ +"'>" + getBingoArray(value) + "</td><td class='tiny' onclick='changecss("+ c +")' id='"+ c++ +"'>" + getBingoArray(value) + "</td><td class='tiny' onclick='changecss("+ c +")' id='"+ c++ +"'>" + getBingoArray(value) + "</td></tr>";
         }
 
         // Sets local storages
@@ -291,6 +446,7 @@ function genBingo()
             localStorage.setItem("Size", size.value);
             localStorage.setItem("Selection", value);
             localStorage.setItem("Card", list.innerHTML);
+            localStorage.setItem("Checkbox", document.getElementById("useSeed").checked);
             localStorage.removeItem("Bingo");
 
             // // Resets previous colours
@@ -311,7 +467,7 @@ function genBingo()
         // Generate goals
         for (i = 0; i < 4; i++)
         {
-            list.innerHTML += "<tr><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td></tr>";       
+            list.innerHTML += "<tr><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + getBingoArray(value) + "</td><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + getBingoArray(value) + "</td><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + getBingoArray(value) + "</td><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + getBingoArray(value) + "</td></tr>";       
         }
 
         // Sets local storages
@@ -320,6 +476,7 @@ function genBingo()
             localStorage.setItem("Size", size.value);
             localStorage.setItem("Selection", value);
             localStorage.setItem("Card", list.innerHTML);
+            localStorage.setItem("Checkbox", document.getElementById("useSeed").checked);
             localStorage.removeItem("Bingo");
 
             // // Resets previous colours
@@ -341,7 +498,7 @@ function genBingo()
         // Generate goals
         for (i = 0; i < 5; i++)
         {
-            list.innerHTML += "<tr><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + wheel(value) + "</td></tr>";       
+            list.innerHTML += "<tr><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + getBingoArray(value) + "</td><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + getBingoArray(value) + "</td><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + getBingoArray(value) + "</td><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + getBingoArray(value) + "</td><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + getBingoArray(value) + "</td></tr>";       
             
         }
 
@@ -351,6 +508,7 @@ function genBingo()
             localStorage.setItem("Size", size.value);
             localStorage.setItem("Selection", value);
             localStorage.setItem("Card", list.innerHTML);
+            localStorage.setItem("Checkbox", document.getElementById("useSeed").checked);
             localStorage.removeItem("Bingo");
 
             // // Resets previous colours
@@ -519,12 +677,14 @@ function checklines()
     }
 }
 
+
 // Retrieve local storages when page load
 function checkLocalStorage()
 {
+
     if (typeof(Storage) !== "undefined") 
         {
-          
+
             if(localStorage.getItem("Size") === null)
             {
                 localStorage.setItem("Size", "Normal");
@@ -537,7 +697,9 @@ function checkLocalStorage()
 
             document.getElementById("bingoText").innerHTML = localStorage.getItem("Bingo");
             document.getElementById("bingoSize").value = localStorage.getItem("Size");
-            document.getElementById("bingolist").innerHTML = localStorage.getItem("Card");          
+            document.getElementById("bingolist").innerHTML = localStorage.getItem("Card");
+            document.getElementById("seedinput").value = localStorage.getItem("Seed");
+            
 
             // Gets coloured in squares
             if (localStorage.getItem("Size") == "Tiny")
@@ -568,8 +730,8 @@ function checkLocalStorage()
                 }
             }
 
-            document.getElementById("bingoSelect").value = localStorage.getItem("Selection");       
-            
+            document.getElementById("bingoSelect").value = localStorage.getItem("Selection");
+            document.getElementById("useSeed").checked = JSON.parse(localStorage.getItem("Checkbox"));
         } 
         else 
         {

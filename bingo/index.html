@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dingo</title>
 
-    <script src="script.js"></script>  
     <link rel="stylesheet" type="text/css" href="style.css">
+    
 
 </head>
 
@@ -24,6 +24,8 @@
                 <option value="jorbs">jorbs</option>
                 <option value="Hot Fuzz (small)">Hot Fuzz (small)</option>
                 <option value="The Room (small)">The Room (small)</option>
+                <option value="Hana Yori Dango">The Room (small)</option>
+                <option value="Slay the Spire">Slay the Spire</option>
                 <option value="Horror Movies">Horror Movies</option>
             </select>
         </div>    
@@ -37,11 +39,15 @@
             </select>
         </div>
 
-        
+        <div id="seeddiv">       
+            <label>Enable custom seed: </label> 
+            <input type="checkbox" id="useSeed"> 
+            <input id="seedinput" type="number" name="seedNum" placeholder="Seed...">
+        </div>
 
         <div id="btndiv">
             <button type="button" onclick="genBingo()">Generate new bingo</button>
-        </div> 
+        </div>  
 
         <div id="bingo">
             <table id="bingolist"></table>
@@ -52,5 +58,6 @@
 
     </div>
 
+    <script src="script.js"></script>
 </body>
 </html>

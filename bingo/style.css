@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Lato|Comfortaa&display=swap');
 
+* {
+    font-family: "Lato";
+}
+
 body {
     background-color: #121212;
     color: #FFFFFF;
@@ -17,7 +21,6 @@ td {
     border: 2px solid grey;
     padding: 5px;
     text-align: center;
-    font-family: "Lato";
     cursor: pointer;
     
 }
@@ -48,20 +51,42 @@ table {
     width: 600px;
 }
 
-#inputdiv, #sizediv {
+#inputdiv, #sizediv, #btndiv, #seeddiv {
     width:285px;
     display: inline-block;
 }
 
-#btndiv {
+#btndiv, #seeddiv {
     margin-top: 10px;
 }
 
+#seeddiv {
+    font-weight: bold;
+}
+
+#seedinput {
+    width: 200px;
+    margin-top: 5px;
+}
 
 h1 {
-    margin: 0px 0px 5px 5px;
-    font-family: "Lato";
+    margin: 0px 0px 5px 0px;
     font-size: 15px;
+}
+
+#useSeed  {
+    width: 20px;
+    height: 20px;
+    margin-bottom: 0px;
+    vertical-align: middle;
+}
+
+#useSeed:hover, button:hover, select:hover {
+    cursor: pointer;
+}
+
+label {
+    vertical-align: middle;
 }
 
 .dropdown {
@@ -69,25 +94,21 @@ h1 {
     color: white;
     border: 2px solid #BB86FC;
     padding: 2px 20px;
-    font-family: "Lato";
     border-radius: 10px;
     font-size: 16px;
-    margin-left: 5px;
 }
 
-button {
+button, input {
     background-color: #252525;
     color: white;
     border: 2px solid #BB86FC;
     padding: 6px 23px;
-    font-family: "Lato";
     border-radius: 10px;
     font-size: 22px;
     margin-bottom: 10px;
-    margin-left: 5px;
 }
 
-button:focus, select:focus {
+button:focus, select:focus, input:focus {
     outline: none;
 }
 
