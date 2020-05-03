@@ -420,6 +420,7 @@ function genBingo()
         // "Normal"-setting bingo
         else
         {
+            
             // Pick first element of shuffled bingo list, then delete it
             var elem = blist[0];
             blist.splice(elem, 1);
@@ -737,4 +738,10 @@ function checkLocalStorage()
         {
         }
 
+}
+
+function disableNormal()
+{
+    
+    document.getElementById("NSize").disabled = true;
 }
