@@ -740,8 +740,17 @@ function checkLocalStorage()
 
 }
 
-function disableNormal()
-{
+// function disableNormal()
+// {
+//     for (var i = 0;i < )
     
-    document.getElementById("NSize").disabled = true;
-}
+//     if (document.querySelector("option").selected.includes("(small)"))
+//     {
+//         document.getElementById("NSize").disabled = true;
+//     }
+//     else
+//     {
+//         document.getElementById("NSize").disabled = false;
+//     }
+    
+// }
