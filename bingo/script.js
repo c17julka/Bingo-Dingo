@@ -285,7 +285,21 @@ function genBingo()
             "'Oh she's fine'",
             "Someone says F4",
             "Scoffing",
-            "Jan Di should not be falling for Jun Pyo right now"
+            "Jan Di should not be falling for Jun Pyo right now",
+            "‘Aish / Aigoo!’",
+            "Stare",
+            "That’s illegal!",
+            "They survived that?!",
+            "Normal bullying",
+            "'You’re Ugly'",
+            "Weird Fashion",
+            "Jealousy",
+            "Super senses",
+            "Jun Pyo says ‘Aish / Aigoo!’",
+            "Little brother does research",
+            "I don't understand",
+            "Please stop, Ji Hoo"
+
         ],
         "Slay the Spire": // 'name' bingo (normal size)
         [
