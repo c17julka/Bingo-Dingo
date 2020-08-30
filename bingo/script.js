@@ -412,36 +412,11 @@ function genBingo()
 
     function getBingoArray(list)
     {
-        // Do at own risk! Generates normal sized bingo on small bingos
-        // WORK IN PROGRESS !!! 
-        if (size.value == "Normal" && value.includes("(small"))
-        {
-            
-            // Pick first element of shuffled bingo list
-            if (icounter > blist.length)
-            {
-                localStorage.setItem("Seed", seed++);
-            }       
-            var elem = blist[icounter];
-            icounter++;
-            if (icounter > blist.length)
-            {
-                localStorage.setItem("Seed", seed--);
-            }     
-            return elem;
-        }
-
-        // "Normal"-setting bingo
-        else
-        {
-            
-            // Pick first element of shuffled bingo list, then delete it
-            var elem = blist[0];
-            blist.splice(elem, 1);
-            
-            return elem;
-        }
+        // Pick first element of shuffled bingo list, then delete it
+        var elem = blist[0];
+        blist.splice(elem, 1);
         
+        return elem;
     }
     
     // Display bingo
@@ -714,6 +689,15 @@ function checkLocalStorage()
             document.getElementById("bingoSize").value = localStorage.getItem("Size");
             document.getElementById("bingolist").innerHTML = localStorage.getItem("Card");
             document.getElementById("seedinput").value = localStorage.getItem("Seed");
+
+            if (localStorage.getItem("Selection").includes("(small)"))
+            {
+               document.getElementById("NSize").disabled = localStorage.getItem("disable"); 
+            }
+            else
+            {
+                document.getElementById("NSize").disabled = false; // since it's .onchange, we manually change this
+            }
             
 
             // Gets coloured in squares
@@ -754,17 +738,24 @@ function checkLocalStorage()
 
 }
 
-// function disableNormal()
-// {
-//     for (var i = 0;i < )
+// Disable the "Normal" size option on smaller bingos
+document.getElementById("bingoSelect").onchange = function()
+{
+    disableNormal();
+}
+
+function disableNormal()
+{
+    if (document.getElementById("bingoSelect").value.includes("(small)"))
+    {
+        document.getElementById("bingoSize").value = "Small";
+        document.getElementById("NSize").disabled = true;
+        localStorage.setItem("disable", document.getElementById("NSize").disabled);
+    }
+    else
+    {
+        document.getElementById("NSize").disabled = false;
+        localStorage.setItem("disable", document.getElementById("NSize").disabled);
+    }
     
-//     if (document.querySelector("option").selected.includes("(small)"))
-//     {
-//         document.getElementById("NSize").disabled = true;
-//     }
-//     else
-//     {
-//         document.getElementById("NSize").disabled = false;
-//     }
-    
-// }
+}
