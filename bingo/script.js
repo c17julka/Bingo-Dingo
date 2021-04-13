@@ -520,6 +520,8 @@ function genBingo()
 function changecss(id)
 {
 
+    const bgColor = "rgb(218, 32, 182)";
+
     if (document.getElementById(id).style.backgroundColor) 
     {
         document.getElementById(id).style.backgroundColor = "";      
@@ -527,7 +529,7 @@ function changecss(id)
     } 
     else 
     {
-        document.getElementById(id).style.backgroundColor = "rgb(187, 134, 252)";
+        document.getElementById(id).style.backgroundColor = bgColor;
         
     }
 
@@ -546,7 +548,8 @@ function changecss(id)
 
 function checklines()
 {
-    var btext = document.getElementById("bingoText");
+    const btext = document.getElementById("bingoText");
+    const bgColor = "rgb(218, 32, 182)";
 
     // Check lines on tiny bingo
     if (localStorage.getItem("Size") == "Tiny")
@@ -554,7 +557,7 @@ function checklines()
         // Check vertical line
         for (i = 0; i < 3; i++)
         {
-            if (document.getElementById(i).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 3).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 6).style.backgroundColor == "rgb(187, 134, 252)")
+            if (document.getElementById(i).style.backgroundColor == bgColor && document.getElementById(i + 3).style.backgroundColor == bgColor && document.getElementById(i + 6).style.backgroundColor == bgColor)
             {
                 btext.innerHTML="BINGO";
                 localStorage.setItem("Bingo", btext.innerHTML);
@@ -565,7 +568,7 @@ function checklines()
         // Check horizontal line
         for (i = 0; i < 9; i += 3)
         {
-            if (document.getElementById(i).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 1).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 2).style.backgroundColor == "rgb(187, 134, 252)")
+            if (document.getElementById(i).style.backgroundColor == bgColor && document.getElementById(i + 1).style.backgroundColor == bgColor && document.getElementById(i + 2).style.backgroundColor == bgColor)
             {
                 btext.innerHTML="BINGO";
                 localStorage.setItem("Bingo", btext.innerHTML);
@@ -573,14 +576,14 @@ function checklines()
         }
     
         // Check diagonal LT to RB
-        if (document.getElementById(0).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(0 + 4).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(0 + 8).style.backgroundColor == "rgb(187, 134, 252)")
+        if (document.getElementById(0).style.backgroundColor == bgColor && document.getElementById(0 + 4).style.backgroundColor == bgColor && document.getElementById(0 + 8).style.backgroundColor == bgColor)
         {
             btext.innerHTML="BINGO";
             localStorage.setItem("Bingo", btext.innerHTML);
         }
     
         // Check diagonal RT to LB
-        if (document.getElementById(2).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(2 + 2).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(2 + 4).style.backgroundColor == "rgb(187, 134, 252)")
+        if (document.getElementById(2).style.backgroundColor == bgColor && document.getElementById(2 + 2).style.backgroundColor == bgColor && document.getElementById(2 + 4).style.backgroundColor == bgColor)
         {
             btext.innerHTML="BINGO";
             localStorage.setItem("Bingo", btext.innerHTML);
@@ -594,7 +597,7 @@ function checklines()
         // Check vertical line
         for (i = 0; i < 4; i++)
         {
-            if (document.getElementById(i).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 4).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 8).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 12).style.backgroundColor == "rgb(187, 134, 252)")
+            if (document.getElementById(i).style.backgroundColor == bgColor && document.getElementById(i + 4).style.backgroundColor == bgColor && document.getElementById(i + 8).style.backgroundColor == bgColor && document.getElementById(i + 12).style.backgroundColor == bgColor)
             {
                 btext.innerHTML="BINGO";
                 localStorage.setItem("Bingo", btext.innerHTML);
@@ -605,7 +608,7 @@ function checklines()
         // Check horizontal line
         for (i = 0; i < 16; i += 4)
         {
-            if (document.getElementById(i).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 1).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 2).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 3).style.backgroundColor == "rgb(187, 134, 252)")
+            if (document.getElementById(i).style.backgroundColor == bgColor && document.getElementById(i + 1).style.backgroundColor == bgColor && document.getElementById(i + 2).style.backgroundColor == bgColor && document.getElementById(i + 3).style.backgroundColor == bgColor)
             {
                 btext.innerHTML="BINGO";
                 localStorage.setItem("Bingo", btext.innerHTML);
@@ -613,14 +616,14 @@ function checklines()
         }
 
         // Check diagonal LT to RB
-        if (document.getElementById(0).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(0 + 5).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(0 + 10).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(0 + 15).style.backgroundColor == "rgb(187, 134, 252)")
+        if (document.getElementById(0).style.backgroundColor == bgColor && document.getElementById(0 + 5).style.backgroundColor == bgColor && document.getElementById(0 + 10).style.backgroundColor == bgColor && document.getElementById(0 + 15).style.backgroundColor == bgColor)
         {
             btext.innerHTML="BINGO";
             localStorage.setItem("Bingo", btext.innerHTML);
         }
 
         // Check diagonal RT to LB
-        if (document.getElementById(3).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(3 + 3).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(3 + 6).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(3 + 9).style.backgroundColor == "rgb(187, 134, 252)")
+        if (document.getElementById(3).style.backgroundColor == bgColor && document.getElementById(3 + 3).style.backgroundColor == bgColor && document.getElementById(3 + 6).style.backgroundColor == bgColor && document.getElementById(3 + 9).style.backgroundColor == bgColor)
         {
             btext.innerHTML="BINGO";
             localStorage.setItem("Bingo", btext.innerHTML);
@@ -633,7 +636,7 @@ function checklines()
         // Check vertical line
         for (i = 0; i < 5; i++)
         {
-            if (document.getElementById(i).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 5).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 10).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 15).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 20).style.backgroundColor == "rgb(187, 134, 252)")
+            if (document.getElementById(i).style.backgroundColor == bgColor && document.getElementById(i + 5).style.backgroundColor == bgColor && document.getElementById(i + 10).style.backgroundColor == bgColor && document.getElementById(i + 15).style.backgroundColor == bgColor && document.getElementById(i + 20).style.backgroundColor == bgColor)
             {
                 btext.innerHTML="BINGO";
                 localStorage.setItem("Bingo", btext.innerHTML);
@@ -644,7 +647,7 @@ function checklines()
         // Check horizontal line
         for (i = 0; i < 25; i += 5)
         {
-            if (document.getElementById(i).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 1).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 2).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 3).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(i + 4).style.backgroundColor == "rgb(187, 134, 252)")
+            if (document.getElementById(i).style.backgroundColor == bgColor && document.getElementById(i + 1).style.backgroundColor == bgColor && document.getElementById(i + 2).style.backgroundColor == bgColor && document.getElementById(i + 3).style.backgroundColor == bgColor && document.getElementById(i + 4).style.backgroundColor == bgColor)
             {
                 btext.innerHTML="BINGO";
                 localStorage.setItem("Bingo", btext.innerHTML);
@@ -652,14 +655,14 @@ function checklines()
         }
 
         // Check diagonal LT to RB
-        if (document.getElementById(0).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(0 + 6).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(0 + 12).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(0 + 18).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(0 + 24).style.backgroundColor == "rgb(187, 134, 252)")
+        if (document.getElementById(0).style.backgroundColor == bgColor && document.getElementById(0 + 6).style.backgroundColor == bgColor && document.getElementById(0 + 12).style.backgroundColor == bgColor && document.getElementById(0 + 18).style.backgroundColor == bgColor && document.getElementById(0 + 24).style.backgroundColor == bgColor)
         {
             btext.innerHTML="BINGO";
             localStorage.setItem("Bingo", btext.innerHTML);
         }
 
         // Check diagonal RT to LB
-        if (document.getElementById(4).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(4 + 4).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(4 + 8).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(4 + 12).style.backgroundColor == "rgb(187, 134, 252)" && document.getElementById(4 + 16).style.backgroundColor == "rgb(187, 134, 252)")
+        if (document.getElementById(4).style.backgroundColor == bgColor && document.getElementById(4 + 4).style.backgroundColor == bgColor && document.getElementById(4 + 8).style.backgroundColor == bgColor && document.getElementById(4 + 12).style.backgroundColor == bgColor && document.getElementById(4 + 16).style.backgroundColor == bgColor)
         {
             btext.innerHTML="BINGO";
             localStorage.setItem("Bingo", btext.innerHTML);
