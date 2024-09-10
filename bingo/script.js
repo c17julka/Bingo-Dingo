@@ -174,8 +174,20 @@ function genBingo()
             "Jealousy",
             "Nightmare",
             "Super senses",
-            "Peace sign"
-            
+            "Peace sign",
+            "Ahjumma bickering",
+            "Cooking scene",
+            "Bad parents relationship",
+            "\"You're not a woman/man to me\"",
+            "Sauna",
+            "Trauma",
+            "Truck of doom",
+            "Ex shows up",
+            "\"Omo!\"",
+            "Creepy stalking",
+            "Almost smoking",
+            "Well-timed interruption",
+            "\"This is not about me, it's about my friend...\"",
         ],
 
         "jorbs": // jorbs (joinrbs) bingo (in progress)
