@@ -2,24 +2,24 @@
 //
 // "name": // 'name' bingo (normal size)
 //         [
-//             "", 
-//             "", 
-//             "", 
-//             "", 
-//             "", 
 //             "",
-//             "", 
 //             "",
-//             "", 
-//             "", 
-//             "", 
-//             "", 
-//             "", 
 //             "",
-//             "", 
 //             "",
-//             "", 
-//             "", 
+//             "",
+//             "",
+//             "",
+//             "",
+//             "",
+//             "",
+//             "",
+//             "",
+//             "",
+//             "",
+//             "",
+//             "",
+//             "",
+//             "",
 //             "",
 //             "",
 //             "",
@@ -31,28 +31,27 @@
 
 // "name (small)": // 'name' bingo (small size)
 //         [
-//             "", 
-//             "", 
-//             "", 
-//             "", 
-//             "", 
 //             "",
-//             "", 
 //             "",
-//             "", 
-//             "", 
-//             "", 
-//             "", 
-//             "", 
 //             "",
-//             "", 
+//             "",
+//             "",
+//             "",
+//             "",
+//             "",
+//             "",
+//             "",
+//             "",
+//             "",
+//             "",
+//             "",
+//             "",
 //             ""
 //         ]
 
- // Counter for td ID
+// Counter for td ID
 
-function genBingo()
-{
+function genBingo() {
     var list = document.getElementById("bingolist");
     var value = document.getElementById("bingoSelect").value;
     var size = document.getElementById("bingoSize");
@@ -69,89 +68,79 @@ function genBingo()
 
     // Set seed var
     // Randomize seed on gen btn click
-    if (!document.getElementById("useSeed").checked)
-    {
+    if (!document.getElementById("useSeed").checked) {
         var randomSeed = Math.floor(Math.random() * 2147483647);
         seed = randomSeed;
 
         // Sets local storages
-        if (typeof(Storage) !== "undefined") 
-        {
+        if (typeof Storage !== "undefined") {
             localStorage.setItem("Seed", seed);
             document.getElementById("seedinput").value = localStorage.getItem("Seed");
-
-        } 
-        else 
-        {
+        } else {
         }
     }
     // Use custom seed
-    else
-    {
+    else {
         seed = seedinput;
 
         // Sets local storages
-        if (typeof(Storage) !== "undefined") 
-        {
+        if (typeof Storage !== "undefined") {
             localStorage.setItem("Seed", seed);
             document.getElementById("seedinput").value = localStorage.getItem("Seed");
-
-        } 
-        else 
-        {
+        } else {
         }
-    } 
+    }
 
     // All bingos
     var bingos = {
-        "Eurovision": // Eurovision bingo
-        [
-            "Fake rain", 
-            "Synchronized dance routine", 
-            "Flag face paint", 
-            "Feathers", 
-            "Presenter outfit change", 
+        // Eurovision bingo
+        Eurovision: [
+            "Fake rain",
+            "Synchronized dance routine",
+            "Flag face paint",
+            "Feathers",
+            "Presenter outfit change",
             "Wearing a hat",
-            "Something goes wrong", 
+            "Something goes wrong",
             "Fire",
-            "Mid-song costume change", 
-            "Song about love", 
-            "Political protest", 
-            "Wind machine", 
-            "Clappy bit", 
+            "Mid-song costume change",
+            "Song about love",
+            "Political protest",
+            "Wind machine",
+            "Clappy bit",
             "Glitter cannon",
-            "This country isn’t in Europe!", 
+            "This country isn’t in Europe!",
             "Someone cries",
-            "Obviously fake instrument playing", 
-            "Woman on a pole", 
+            "Obviously fake instrument playing",
+            "Woman on a pole",
             "Bondage",
             "Key change",
             "Your country gives another person’s country points",
             "'Mellanakt'",
             "Commentator makes bad joke",
             "Awkward pause",
-            "Your song gets no points from a country"
+            "Your song gets no points from a country",
         ],
-        "Kdrama Rom Com": // kdrama rom com bingo
-        [
-            "Piggyback ride", 
-            "Slowmotion", 
-            "Wrist grab", 
-            "Ramyun", 
-            "Flashback", 
+        // kdrama rom com bingo
+        "Kdrama Rom Com": [
+            "Piggyback ride",
+            "Slowmotion",
+            "Wrist grab",
+            "Ramyun",
+            "Flashback",
             "Bad Englishu",
-            "Slap!", 
+            "Slap!",
             "Soju",
-            "Aish! / Aigoo!", 
-            "Cry", 
-            "Second lead moment", 
-            "Sleeps like a log", 
-            "Shower scene", 
+            "Aish! / Aigoo!",
+            "Cry",
+            "Second lead moment",
+            "Sleeps like a log",
+            "Shower scene",
             "Face zoom",
-            "First kiss", 
+            "First kiss",
             "Male lead is a Bitch!",
-            "Second female lead is a Bitch!", 
-            "Stare", 
+            "Second female lead is a Bitch!",
+            "Stare",
             "Evil parent",
             "Rich Bitch!",
             "Oops! Fell on your shoulder",
@@ -174,30 +163,42 @@ function genBingo()
             "Jealousy",
             "Nightmare",
             "Super senses",
-            "Peace sign"
-            
+            "Peace sign",
+            "Ahjumma bickering",
+            "Cooking scene",
+            "Bad parents relationship",
+            '"You\'re not a woman/man to me"',
+            "Sauna",
+            "Trauma",
+            "Truck of doom",
+            "Ex shows up",
+            '"Omo!"',
+            "Creepy stalking",
+            "Almost smoking",
+            "Well-timed interruption",
+            '"This is not about me, it\'s about my friend..."',
         ],
 
-        "jorbs": // jorbs (joinrbs) bingo (in progress)
-        [
-            "DIG!", 
-            "Calling out chatter for being wrong", 
-            "'I don't know what I'm doing'", 
-            "Kills The Heart", 
-            "Dies", 
+        // jorbs (joinrbs) bingo (in progress)
+        jorbs: [
+            "DIG!",
+            "Calling out chatter for being wrong",
+            "'I don't know what I'm doing'",
+            "Kills The Heart",
+            "Dies",
             "Corruption + Dead Branch",
-            "Dead Branch", 
+            "Dead Branch",
             "Answers a random / irrelevant question",
-            "Talks about Dolphin", 
-            "Opens Paint", 
-            "Sasses against chat", 
-            "Bursts into random laughter", 
-            "Forgets to use potion", 
+            "Talks about Dolphin",
+            "Opens Paint",
+            "Sasses against chat",
+            "Bursts into random laughter",
+            "Forgets to use potion",
             "!lucker",
-            "Promotes chatter", 
+            "Promotes chatter",
             "Talks about New Zealand",
-            "Slime Boss kicks ass", 
-            "Talks about Caitlin", 
+            "Slime Boss kicks ass",
+            "Talks about Caitlin",
             "Zephyr visits",
             "Bathroom break",
             "Eating",
@@ -212,73 +213,73 @@ function genBingo()
             "Talks about some smart shit",
             "Starts singing",
             "Does math wrong",
-            "Talks shit about Watcher"
+            "Talks shit about Watcher",
         ],
 
-        "Hot Fuzz (small)": // Hot Fuzz bingo (in progress)
-        [
-            "Orders a drink", 
-            "Says 'Greater good'", 
-            "Black hood", 
-            "Danny asks Nick a question", 
-            "Says 'Angle'", 
+        // Hot Fuzz bingo (in progress)
+        "Hot Fuzz (small)": [
+            "Orders a drink",
+            "Says 'Greater good'",
+            "Black hood",
+            "Danny asks Nick a question",
+            "Says 'Angle'",
             "Someone gets shot",
-            "Michal says 'Yarp'", 
+            "Michal says 'Yarp'",
             "Whoosh sound",
-            "Mugshot", 
-            "Says 'Cornetto'", 
-            "Murder = accident", 
-            "Angel or Danny whips out new firepower", 
-            "Simon Skinner falls", 
+            "Mugshot",
+            "Says 'Cornetto'",
+            "Murder = accident",
+            "Angel or Danny whips out new firepower",
+            "Simon Skinner falls",
             ":)",
-            "First kiss", 
-            "Male lead is a Bitch!"
+            "First kiss",
+            "Male lead is a Bitch!",
         ],
 
-        "The Room (small)": // The Room bingo
-        [
-            "Framed Spoons", 
-            "Cheep Cheep Cheep", 
-            "'You're tearing me apart, Lisa!'", 
-            "'I just wanna watch you guys'", 
-            "The Laugh", 
+        // The Room bingo
+        "The Room (small)": [
+            "Framed Spoons",
+            "Cheep Cheep Cheep",
+            "'You're tearing me apart, Lisa!'",
+            "'I just wanna watch you guys'",
+            "The Laugh",
             "'I definitely have breast cancer'",
-            "'Oh hi doggy'", 
+            "'Oh hi doggy'",
             "Drug dealer",
             "'Keep your stupid comments in your pocket'",
-            "'Anyway, how's your sex life?'", 
-            "Belly Button Sex", 
-            "'Oh hi Mark'", 
-            "'It's not true...'", 
-            "'I did naaaawt'", 
+            "'Anyway, how's your sex life?'",
+            "Belly Button Sex",
+            "'Oh hi Mark'",
+            "'It's not true...'",
+            "'I did naaaawt'",
             "Suicide",
-            "Football", 
+            "Football",
             "'The stories you tell, Mark'",
             "The Laugh, again ;)",
             "Golden Gate Bridge ",
-            "Scotchka"
+            "Scotchka",
         ],
 
-        "Hana Yori Dango": // 'name' bingo (normal size)
-        [
-            "Jun Pyo gets beat up", 
-            "Jun Pyo gets hit in the face", 
-            "Jan Di yells very loudly", 
-            "Ji Hoo gives shade", 
-            "Random English from Woo Bin", 
+        // 'name' bingo (normal size)
+        "Hana Yori Dango": [
+            "Jun Pyo gets beat up",
+            "Jun Pyo gets hit in the face",
+            "Jan Di yells very loudly",
+            "Ji Hoo gives shade",
+            "Random English from Woo Bin",
             "F4 walks in slow motion",
-            "You desperately want to hit Jun Pyo in the crotch", 
+            "You desperately want to hit Jun Pyo in the crotch",
             "You desperately want to hit Jun Pyo in the throat",
-            "Jun Pyo being a rich bitch", 
-            "Jun Pyo making others do shit for him", 
-            "Jan Di's parents are being bitches", 
-            "Jan Di hits someone", 
-            "Weird bullying", 
+            "Jun Pyo being a rich bitch",
+            "Jun Pyo making others do shit for him",
+            "Jan Di's parents are being bitches",
+            "Jan Di hits someone",
+            "Weird bullying",
             "Where are the teachers?",
-            "F4 Death Note", 
+            "F4 Death Note",
             "WTF Ji Hoo?!",
-            "Yi Jung + Ga Eul moment", 
-            "Jan Di swims", 
+            "Yi Jung + Ga Eul moment",
+            "Jan Di swims",
             "Jan Di gobbles down food",
             "Ji Hoo looks constipated",
             "Tragic flashback",
@@ -298,11 +299,10 @@ function genBingo()
             "Jun Pyo says ‘Aish / Aigoo!’",
             "Little brother does research",
             "I don't understand",
-            "Please stop, Ji Hoo"
-
+            "Please stop, Ji Hoo",
         ],
-        "Slay the Spire": // 'name' bingo (normal size)
-        [
+        // 'name' bingo (normal size)
+        "Slay the Spire": [
             "Spend 3 energy playing shivs in 1 turn",
             "Defeat a boss with 1 HP remaining",
             "Reach 100 block during combat",
@@ -342,28 +342,28 @@ function genBingo()
             "Heal in 3 different ways during a single fight",
             "Have 3 innate cards in your deck",
             "Die by playing a card",
-            "Complete a run (Heart not required) on A15 or higher"
+            "Complete a run (Heart not required) on A15 or higher",
         ],
-        "Horror Movies": // Generic horror movies bingo
-        [
-            "Jumpscare", 
-            "Creepy smile", 
-            "Black guy dies", 
-            "Black guy dies first", 
-            "Sexy time", 
+        // Generic horror movies bingo
+        "Horror Movies": [
+            "Jumpscare",
+            "Creepy smile",
+            "Black guy dies",
+            "Black guy dies first",
+            "Sexy time",
             "Creepy kid",
-            "Build up - no jumpscare", 
+            "Build up - no jumpscare",
             "Dead animal",
-            "Dead person comes back alive", 
-            "Creepy mirror", 
-            "Cat", 
-            "Someone trips", 
-            "Gunshot", 
+            "Dead person comes back alive",
+            "Creepy mirror",
+            "Cat",
+            "Someone trips",
+            "Gunshot",
             "Dead body",
-            "Basement", 
+            "Basement",
             "Spooky house",
-            "Lights go out", 
-            "Under the bed!", 
+            "Lights go out",
+            "Under the bed!",
             "Behind you!",
             "Bugs",
             "Alcohol",
@@ -375,25 +375,24 @@ function genBingo()
             "Doors open or close on their own",
             "Object flies on their own",
             "Teenagers",
-            "Shitty CGI"
-        ]
-    }           
+            "Shitty CGI",
+        ],
+    };
 
     // -----
     // Returns float used for seed https://stackoverflow.com/a/53758827
-    function random() 
-    {
+    function random() {
         var x = Math.sin(seed++) * 2147483646;
         return x - Math.floor(x);
     }
-    
-    function shuffleBingoList(array, seed) 
-    {
-        var arrayL = array.length, t, i;
-    
+
+    function shuffleBingoList(array, seed) {
+        var arrayL = array.length,
+            t,
+            i;
+
         // While there remain elements to shuffle…
-        while (arrayL) 
-        {
+        while (arrayL) {
             // Pick a remaining element…
             i = Math.floor(random(seed) * arrayL--);
 
@@ -401,38 +400,53 @@ function genBingo()
             t = array[arrayL];
             array[arrayL] = array[i];
             array[i] = t;
-            ++seed; 
+            ++seed;
         }
-    
+
         return array;
     }
     // Shuffled bingo list
     var blist = shuffleBingoList(bingos[value], localStorage.getItem("Seed"));
     // -----
 
-    function getBingoArray(list)
-    {
+    function getBingoArray(list) {
         // Pick first element of shuffled bingo list, then delete it
         var elem = blist[0];
         blist.splice(elem, 1);
-        
+
         return elem;
     }
-    
+
     // Display bingo
     //
     // 3x3 bingo
-    if (size.value == "Tiny")
-    {
+    if (size.value == "Tiny") {
         // Generate goals
-        for (i = 0; i < 3; i++)
-        {
-            list.innerHTML += "<tr><td class='tiny' onclick='changecss("+ c +")' id='"+ c++ +"'>" + getBingoArray(value) + "</td><td class='tiny' onclick='changecss("+ c +")' id='"+ c++ +"'>" + getBingoArray(value) + "</td><td class='tiny' onclick='changecss("+ c +")' id='"+ c++ +"'>" + getBingoArray(value) + "</td></tr>";
+        for (i = 0; i < 3; i++) {
+            list.innerHTML +=
+                "<tr><td class='tiny' onclick='changecss(" +
+                c +
+                ")' id='" +
+                c++ +
+                "'>" +
+                getBingoArray(value) +
+                "</td><td class='tiny' onclick='changecss(" +
+                c +
+                ")' id='" +
+                c++ +
+                "'>" +
+                getBingoArray(value) +
+                "</td><td class='tiny' onclick='changecss(" +
+                c +
+                ")' id='" +
+                c++ +
+                "'>" +
+                getBingoArray(value) +
+                "</td></tr>";
         }
 
         // Sets local storages
-        if (typeof(Storage) !== "undefined") 
-        {
+        if (typeof Storage !== "undefined") {
             localStorage.setItem("Size", size.value);
             localStorage.setItem("Selection", value);
             localStorage.setItem("Card", list.innerHTML);
@@ -440,29 +454,47 @@ function genBingo()
             localStorage.removeItem("Bingo");
 
             // // Resets previous colours
-            for(j=0;j<25;j++)
-            {
+            for (j = 0; j < 25; j++) {
                 localStorage.removeItem(j);
             }
-        } 
-        else 
-        {
+        } else {
         }
-        
     }
 
     // 4x4 bingo
-    else if (size.value == "Small")
-    {
+    else if (size.value == "Small") {
         // Generate goals
-        for (i = 0; i < 4; i++)
-        {
-            list.innerHTML += "<tr><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + getBingoArray(value) + "</td><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + getBingoArray(value) + "</td><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + getBingoArray(value) + "</td><td class='small' onclick='changecss("+ c +")' id='"+ c++ +"'>" + getBingoArray(value) + "</td></tr>";       
+        for (i = 0; i < 4; i++) {
+            list.innerHTML +=
+                "<tr><td class='small' onclick='changecss(" +
+                c +
+                ")' id='" +
+                c++ +
+                "'>" +
+                getBingoArray(value) +
+                "</td><td class='small' onclick='changecss(" +
+                c +
+                ")' id='" +
+                c++ +
+                "'>" +
+                getBingoArray(value) +
+                "</td><td class='small' onclick='changecss(" +
+                c +
+                ")' id='" +
+                c++ +
+                "'>" +
+                getBingoArray(value) +
+                "</td><td class='small' onclick='changecss(" +
+                c +
+                ")' id='" +
+                c++ +
+                "'>" +
+                getBingoArray(value) +
+                "</td></tr>";
         }
 
         // Sets local storages
-        if (typeof(Storage) !== "undefined") 
-        {
+        if (typeof Storage !== "undefined") {
             localStorage.setItem("Size", size.value);
             localStorage.setItem("Selection", value);
             localStorage.setItem("Card", list.innerHTML);
@@ -470,31 +502,53 @@ function genBingo()
             localStorage.removeItem("Bingo");
 
             // // Resets previous colours
-            for(j=0;j<25;j++)
-            {
+            for (j = 0; j < 25; j++) {
                 localStorage.removeItem(j);
             }
-            
-        } 
-        else 
-        {
+        } else {
         }
-
     }
 
     // 5x5 bingo
-    else 
-    {
+    else {
         // Generate goals
-        for (i = 0; i < 5; i++)
-        {
-            list.innerHTML += "<tr><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + getBingoArray(value) + "</td><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + getBingoArray(value) + "</td><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + getBingoArray(value) + "</td><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + getBingoArray(value) + "</td><td class='normal' onclick='changecss("+ c +")' id='"+ c++ +"'>" + getBingoArray(value) + "</td></tr>";       
-            
+        for (i = 0; i < 5; i++) {
+            list.innerHTML +=
+                "<tr><td class='normal' onclick='changecss(" +
+                c +
+                ")' id='" +
+                c++ +
+                "'>" +
+                getBingoArray(value) +
+                "</td><td class='normal' onclick='changecss(" +
+                c +
+                ")' id='" +
+                c++ +
+                "'>" +
+                getBingoArray(value) +
+                "</td><td class='normal' onclick='changecss(" +
+                c +
+                ")' id='" +
+                c++ +
+                "'>" +
+                getBingoArray(value) +
+                "</td><td class='normal' onclick='changecss(" +
+                c +
+                ")' id='" +
+                c++ +
+                "'>" +
+                getBingoArray(value) +
+                "</td><td class='normal' onclick='changecss(" +
+                c +
+                ")' id='" +
+                c++ +
+                "'>" +
+                getBingoArray(value) +
+                "</td></tr>";
         }
 
         // Sets local storages
-        if (typeof(Storage) !== "undefined") 
-        {
+        if (typeof Storage !== "undefined") {
             localStorage.setItem("Size", size.value);
             localStorage.setItem("Selection", value);
             localStorage.setItem("Card", list.innerHTML);
@@ -502,263 +556,255 @@ function genBingo()
             localStorage.removeItem("Bingo");
 
             // // Resets previous colours
-            for(j=0;j<25;j++)
-            {
+            for (j = 0; j < 25; j++) {
                 localStorage.removeItem(j);
             }
-        } 
-        else 
-        {
+        } else {
         }
     }
 
-    btext.innerHTML="";
-    
+    btext.innerHTML = "";
 }
 
 // Click on goal to fill it
-function changecss(id)
-{
-
+function changecss(id) {
     const bgColor = "rgb(218, 32, 182)";
 
-    if (document.getElementById(id).style.backgroundColor) 
-    {
-        document.getElementById(id).style.backgroundColor = "";      
-       
-    } 
-    else 
-    {
+    if (document.getElementById(id).style.backgroundColor) {
+        document.getElementById(id).style.backgroundColor = "";
+    } else {
         document.getElementById(id).style.backgroundColor = bgColor;
-        
     }
 
     // Saves coloured squares
-    if (typeof(Storage) !== "undefined") 
-    {
+    if (typeof Storage !== "undefined") {
         localStorage.setItem(id, document.getElementById(id).style.backgroundColor);
-    } 
-    else 
-    {
+    } else {
     }
 
     checklines();
-    
 }
 
-function checklines()
-{
+function checklines() {
     const btext = document.getElementById("bingoText");
     const bgColor = "rgb(218, 32, 182)";
 
     // Check lines on tiny bingo
-    if (localStorage.getItem("Size") == "Tiny")
-    {
+    if (localStorage.getItem("Size") == "Tiny") {
         // Check vertical line
-        for (i = 0; i < 3; i++)
-        {
-            if (document.getElementById(i).style.backgroundColor == bgColor && document.getElementById(i + 3).style.backgroundColor == bgColor && document.getElementById(i + 6).style.backgroundColor == bgColor)
-            {
-                btext.innerHTML="BINGO";
+        for (i = 0; i < 3; i++) {
+            if (
+                document.getElementById(i).style.backgroundColor == bgColor &&
+                document.getElementById(i + 3).style.backgroundColor == bgColor &&
+                document.getElementById(i + 6).style.backgroundColor == bgColor
+            ) {
+                btext.innerHTML = "BINGO";
                 localStorage.setItem("Bingo", btext.innerHTML);
             }
-    
         }
-    
+
         // Check horizontal line
-        for (i = 0; i < 9; i += 3)
-        {
-            if (document.getElementById(i).style.backgroundColor == bgColor && document.getElementById(i + 1).style.backgroundColor == bgColor && document.getElementById(i + 2).style.backgroundColor == bgColor)
-            {
-                btext.innerHTML="BINGO";
+        for (i = 0; i < 9; i += 3) {
+            if (
+                document.getElementById(i).style.backgroundColor == bgColor &&
+                document.getElementById(i + 1).style.backgroundColor == bgColor &&
+                document.getElementById(i + 2).style.backgroundColor == bgColor
+            ) {
+                btext.innerHTML = "BINGO";
                 localStorage.setItem("Bingo", btext.innerHTML);
             }
         }
-    
+
         // Check diagonal LT to RB
-        if (document.getElementById(0).style.backgroundColor == bgColor && document.getElementById(0 + 4).style.backgroundColor == bgColor && document.getElementById(0 + 8).style.backgroundColor == bgColor)
-        {
-            btext.innerHTML="BINGO";
+        if (
+            document.getElementById(0).style.backgroundColor == bgColor &&
+            document.getElementById(0 + 4).style.backgroundColor == bgColor &&
+            document.getElementById(0 + 8).style.backgroundColor == bgColor
+        ) {
+            btext.innerHTML = "BINGO";
             localStorage.setItem("Bingo", btext.innerHTML);
         }
-    
+
         // Check diagonal RT to LB
-        if (document.getElementById(2).style.backgroundColor == bgColor && document.getElementById(2 + 2).style.backgroundColor == bgColor && document.getElementById(2 + 4).style.backgroundColor == bgColor)
-        {
-            btext.innerHTML="BINGO";
+        if (
+            document.getElementById(2).style.backgroundColor == bgColor &&
+            document.getElementById(2 + 2).style.backgroundColor == bgColor &&
+            document.getElementById(2 + 4).style.backgroundColor == bgColor
+        ) {
+            btext.innerHTML = "BINGO";
             localStorage.setItem("Bingo", btext.innerHTML);
         }
     }
 
     // Check lines on small bingo
-    else if (localStorage.getItem("Size") == "Small")
-    {
-
+    else if (localStorage.getItem("Size") == "Small") {
         // Check vertical line
-        for (i = 0; i < 4; i++)
-        {
-            if (document.getElementById(i).style.backgroundColor == bgColor && document.getElementById(i + 4).style.backgroundColor == bgColor && document.getElementById(i + 8).style.backgroundColor == bgColor && document.getElementById(i + 12).style.backgroundColor == bgColor)
-            {
-                btext.innerHTML="BINGO";
+        for (i = 0; i < 4; i++) {
+            if (
+                document.getElementById(i).style.backgroundColor == bgColor &&
+                document.getElementById(i + 4).style.backgroundColor == bgColor &&
+                document.getElementById(i + 8).style.backgroundColor == bgColor &&
+                document.getElementById(i + 12).style.backgroundColor == bgColor
+            ) {
+                btext.innerHTML = "BINGO";
                 localStorage.setItem("Bingo", btext.innerHTML);
             }
-
         }
 
         // Check horizontal line
-        for (i = 0; i < 16; i += 4)
-        {
-            if (document.getElementById(i).style.backgroundColor == bgColor && document.getElementById(i + 1).style.backgroundColor == bgColor && document.getElementById(i + 2).style.backgroundColor == bgColor && document.getElementById(i + 3).style.backgroundColor == bgColor)
-            {
-                btext.innerHTML="BINGO";
+        for (i = 0; i < 16; i += 4) {
+            if (
+                document.getElementById(i).style.backgroundColor == bgColor &&
+                document.getElementById(i + 1).style.backgroundColor == bgColor &&
+                document.getElementById(i + 2).style.backgroundColor == bgColor &&
+                document.getElementById(i + 3).style.backgroundColor == bgColor
+            ) {
+                btext.innerHTML = "BINGO";
                 localStorage.setItem("Bingo", btext.innerHTML);
             }
         }
 
         // Check diagonal LT to RB
-        if (document.getElementById(0).style.backgroundColor == bgColor && document.getElementById(0 + 5).style.backgroundColor == bgColor && document.getElementById(0 + 10).style.backgroundColor == bgColor && document.getElementById(0 + 15).style.backgroundColor == bgColor)
-        {
-            btext.innerHTML="BINGO";
+        if (
+            document.getElementById(0).style.backgroundColor == bgColor &&
+            document.getElementById(0 + 5).style.backgroundColor == bgColor &&
+            document.getElementById(0 + 10).style.backgroundColor == bgColor &&
+            document.getElementById(0 + 15).style.backgroundColor == bgColor
+        ) {
+            btext.innerHTML = "BINGO";
             localStorage.setItem("Bingo", btext.innerHTML);
         }
 
         // Check diagonal RT to LB
-        if (document.getElementById(3).style.backgroundColor == bgColor && document.getElementById(3 + 3).style.backgroundColor == bgColor && document.getElementById(3 + 6).style.backgroundColor == bgColor && document.getElementById(3 + 9).style.backgroundColor == bgColor)
-        {
-            btext.innerHTML="BINGO";
+        if (
+            document.getElementById(3).style.backgroundColor == bgColor &&
+            document.getElementById(3 + 3).style.backgroundColor == bgColor &&
+            document.getElementById(3 + 6).style.backgroundColor == bgColor &&
+            document.getElementById(3 + 9).style.backgroundColor == bgColor
+        ) {
+            btext.innerHTML = "BINGO";
             localStorage.setItem("Bingo", btext.innerHTML);
         }
     }
-    
+
     // Check lines on normal bingo
-    else if (localStorage.getItem("Size") == "Normal")
-    {
+    else if (localStorage.getItem("Size") == "Normal") {
         // Check vertical line
-        for (i = 0; i < 5; i++)
-        {
-            if (document.getElementById(i).style.backgroundColor == bgColor && document.getElementById(i + 5).style.backgroundColor == bgColor && document.getElementById(i + 10).style.backgroundColor == bgColor && document.getElementById(i + 15).style.backgroundColor == bgColor && document.getElementById(i + 20).style.backgroundColor == bgColor)
-            {
-                btext.innerHTML="BINGO";
+        for (i = 0; i < 5; i++) {
+            if (
+                document.getElementById(i).style.backgroundColor == bgColor &&
+                document.getElementById(i + 5).style.backgroundColor == bgColor &&
+                document.getElementById(i + 10).style.backgroundColor == bgColor &&
+                document.getElementById(i + 15).style.backgroundColor == bgColor &&
+                document.getElementById(i + 20).style.backgroundColor == bgColor
+            ) {
+                btext.innerHTML = "BINGO";
                 localStorage.setItem("Bingo", btext.innerHTML);
             }
-
         }
 
         // Check horizontal line
-        for (i = 0; i < 25; i += 5)
-        {
-            if (document.getElementById(i).style.backgroundColor == bgColor && document.getElementById(i + 1).style.backgroundColor == bgColor && document.getElementById(i + 2).style.backgroundColor == bgColor && document.getElementById(i + 3).style.backgroundColor == bgColor && document.getElementById(i + 4).style.backgroundColor == bgColor)
-            {
-                btext.innerHTML="BINGO";
+        for (i = 0; i < 25; i += 5) {
+            if (
+                document.getElementById(i).style.backgroundColor == bgColor &&
+                document.getElementById(i + 1).style.backgroundColor == bgColor &&
+                document.getElementById(i + 2).style.backgroundColor == bgColor &&
+                document.getElementById(i + 3).style.backgroundColor == bgColor &&
+                document.getElementById(i + 4).style.backgroundColor == bgColor
+            ) {
+                btext.innerHTML = "BINGO";
                 localStorage.setItem("Bingo", btext.innerHTML);
             }
         }
 
         // Check diagonal LT to RB
-        if (document.getElementById(0).style.backgroundColor == bgColor && document.getElementById(0 + 6).style.backgroundColor == bgColor && document.getElementById(0 + 12).style.backgroundColor == bgColor && document.getElementById(0 + 18).style.backgroundColor == bgColor && document.getElementById(0 + 24).style.backgroundColor == bgColor)
-        {
-            btext.innerHTML="BINGO";
+        if (
+            document.getElementById(0).style.backgroundColor == bgColor &&
+            document.getElementById(0 + 6).style.backgroundColor == bgColor &&
+            document.getElementById(0 + 12).style.backgroundColor == bgColor &&
+            document.getElementById(0 + 18).style.backgroundColor == bgColor &&
+            document.getElementById(0 + 24).style.backgroundColor == bgColor
+        ) {
+            btext.innerHTML = "BINGO";
             localStorage.setItem("Bingo", btext.innerHTML);
         }
 
         // Check diagonal RT to LB
-        if (document.getElementById(4).style.backgroundColor == bgColor && document.getElementById(4 + 4).style.backgroundColor == bgColor && document.getElementById(4 + 8).style.backgroundColor == bgColor && document.getElementById(4 + 12).style.backgroundColor == bgColor && document.getElementById(4 + 16).style.backgroundColor == bgColor)
-        {
-            btext.innerHTML="BINGO";
+        if (
+            document.getElementById(4).style.backgroundColor == bgColor &&
+            document.getElementById(4 + 4).style.backgroundColor == bgColor &&
+            document.getElementById(4 + 8).style.backgroundColor == bgColor &&
+            document.getElementById(4 + 12).style.backgroundColor == bgColor &&
+            document.getElementById(4 + 16).style.backgroundColor == bgColor
+        ) {
+            btext.innerHTML = "BINGO";
             localStorage.setItem("Bingo", btext.innerHTML);
         }
     }
 }
 
-
 // Retrieve local storages when page load
-function checkLocalStorage()
-{
-
-    if (typeof(Storage) !== "undefined") 
-        {
-
-            if(localStorage.getItem("Size") === null)
-            {
-                localStorage.setItem("Size", "Normal");
-            }
-
-            if(localStorage.getItem("Selection") === null)
-            {
-                localStorage.setItem("Selection", "Eurovision");
-            }
-
-            document.getElementById("bingoText").innerHTML = localStorage.getItem("Bingo");
-            document.getElementById("bingoSize").value = localStorage.getItem("Size");
-            document.getElementById("bingolist").innerHTML = localStorage.getItem("Card");
-            document.getElementById("seedinput").value = localStorage.getItem("Seed");
-
-            if (localStorage.getItem("Selection").includes("(small)"))
-            {
-               document.getElementById("NSize").disabled = localStorage.getItem("disable"); 
-            }
-            else
-            {
-                document.getElementById("NSize").disabled = false; // since it's .onchange, we manually change this
-            }
-            
-
-            // Gets coloured in squares
-            if (localStorage.getItem("Size") == "Tiny")
-            for(i=0;i<9;i++)
-            {
-                if (localStorage.hasOwnProperty(i))
-                {
-                    document.getElementById(i).style.backgroundColor = localStorage.getItem(i);
-                }
-                
-            }
-
-            if (localStorage.getItem("Size") == "Small")
-            for(i=0;i<16;i++)
-            {
-                if (localStorage.hasOwnProperty(i))
-                {
-                    document.getElementById(i).style.backgroundColor = localStorage.getItem(i);
-                }
-            }
-
-            if (localStorage.getItem("Size") == "Normal")
-            for(i=0;i<25;i++)
-            {
-                if (localStorage.hasOwnProperty(i))
-                {
-                    document.getElementById(i).style.backgroundColor = localStorage.getItem(i);
-                }
-            }
-
-            document.getElementById("bingoSelect").value = localStorage.getItem("Selection");
-            document.getElementById("useSeed").checked = JSON.parse(localStorage.getItem("Checkbox"));
-        } 
-        else 
-        {
+function checkLocalStorage() {
+    if (typeof Storage !== "undefined") {
+        if (localStorage.getItem("Size") === null) {
+            localStorage.setItem("Size", "Normal");
         }
 
+        if (localStorage.getItem("Selection") === null) {
+            localStorage.setItem("Selection", "Eurovision");
+        }
+
+        document.getElementById("bingoText").innerHTML = localStorage.getItem("Bingo");
+        document.getElementById("bingoSize").value = localStorage.getItem("Size");
+        document.getElementById("bingolist").innerHTML = localStorage.getItem("Card");
+        document.getElementById("seedinput").value = localStorage.getItem("Seed");
+
+        if (localStorage.getItem("Selection").includes("(small)")) {
+            document.getElementById("NSize").disabled = localStorage.getItem("disable");
+        } else {
+            document.getElementById("NSize").disabled = false; // since it's .onchange, we manually change this
+        }
+
+        // Gets coloured in squares
+        if (localStorage.getItem("Size") == "Tiny")
+            for (i = 0; i < 9; i++) {
+                if (localStorage.hasOwnProperty(i)) {
+                    document.getElementById(i).style.backgroundColor = localStorage.getItem(i);
+                }
+            }
+
+        if (localStorage.getItem("Size") == "Small")
+            for (i = 0; i < 16; i++) {
+                if (localStorage.hasOwnProperty(i)) {
+                    document.getElementById(i).style.backgroundColor = localStorage.getItem(i);
+                }
+            }
+
+        if (localStorage.getItem("Size") == "Normal")
+            for (i = 0; i < 25; i++) {
+                if (localStorage.hasOwnProperty(i)) {
+                    document.getElementById(i).style.backgroundColor = localStorage.getItem(i);
+                }
+            }
+
+        document.getElementById("bingoSelect").value = localStorage.getItem("Selection");
+        document.getElementById("useSeed").checked = JSON.parse(localStorage.getItem("Checkbox"));
+    } else {
+    }
 }
 
 // Disable the "Normal" size option on smaller bingos
-document.getElementById("bingoSelect").onchange = function()
-{
+document.getElementById("bingoSelect").onchange = function () {
     disableNormal();
-}
+};
 
-function disableNormal()
-{
-    if (document.getElementById("bingoSelect").value.includes("(small)"))
-    {
+function disableNormal() {
+    if (document.getElementById("bingoSelect").value.includes("(small)")) {
         document.getElementById("bingoSize").value = "Small";
         document.getElementById("NSize").disabled = true;
         localStorage.setItem("disable", document.getElementById("NSize").disabled);
-    }
-    else
-    {
+    } else {
         document.getElementById("NSize").disabled = false;
         localStorage.setItem("disable", document.getElementById("NSize").disabled);
     }
-    
 }
